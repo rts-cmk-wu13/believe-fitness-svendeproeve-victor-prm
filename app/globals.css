@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  /* 50 %L */
+  --color-fit-reg: #F1C40E;
+  /* 25 %L */
+  --color-fit-drk: #181401;
+  /* 25 %L */
+  --color-fit-med: #786207;
+  /* 75 %L */
+  --color-fit-lte: #f8e187;
+  /* 95 %L */
+  --color-fit-bri: ##fef9e7;
+
+  --color-fit-ff: #fefdf5;
+  --color-fit-9e: #9e9e9e;
+  --color-fit-6f: #6F6F6F;
+  --color-fit-00: #0a0801;
+
+  /* --color-fit-acc: #ffd6a8; */
+
+  --font-poppins: var(--font-poppins);
+  --font-inter: var(--font-inter);
+
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in-scale: fade-in-scale 1s ease-out forwards;
+  --animate-fade-in-ltr: fade-in-ltr 1s ease-out forwards;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-scale {
+    0% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fade-in-ltr {
+    0% {
+      opacity: 0;
+      transform: translateX(-25%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
