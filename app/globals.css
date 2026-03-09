@@ -68,7 +68,7 @@
 
 @layer components {
   .cust-button {
-    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0
+    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0 hover:bg-fit-lte hover:italic cursor-pointer
   }
 
   .cust-grid-stack {
@@ -76,7 +76,7 @@
   }
 
   .cust-input {
-    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-4xl py-3 px-5 w-full grow placeholder:capitalize
+    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-3xl py-3 px-5 w-full grow placeholder:capitalize focus:text-fit-00 focus:ring-fit-6f
   }
 
   .cust-form {

@@ -6,7 +6,7 @@ import ButtonPrimary from "@/components/ui/buttons/button-primary"
 
 import { useActionState, useEffect } from "react"
 import subscribeToNewsletter from "./action"
-/* import { toast } from "react-toastify"; */
+import { toast } from "react-toastify";
 
 const initialState = {
     values: {
@@ -20,12 +20,14 @@ export default function LandingNewsletter() {
     const [state, formAction, isPending] = useActionState(subscribeToNewsletter, initialState);
     /* console.log("Errors", state.errors) */
 
-    /*  useEffect(() => {
-         if (state?.id) {
-             toast.success("Tak for din tilmelding")
-         }
-     }, [state?.id]);
-    */
+    console.log("state", state)
+
+    useEffect(() => {
+        if (state?.id) {
+            toast.success("Tak for din tilmelding")
+        }
+    }, [state?.id]);
+
 
     return (
         <LandingSection title="Sign up for our newsletter">

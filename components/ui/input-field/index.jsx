@@ -1,3 +1,6 @@
+import { LuCircleX } from "react-icons/lu";
+
+
 export default function InputField({ type, name, label, value, defaultValue, errors, className }) {
     //Guard Clauses
     if (!name) throw new Error("Missing name or type")
@@ -7,7 +10,16 @@ export default function InputField({ type, name, label, value, defaultValue, err
 
     const ErrorMessage = ({ msg, abs = true }) => {
         return (
-            <strong className={`${abs && "absolute -top-1.5 right-0"}  px-2 py-1 rounded-xl text-dance-e9 border border-red-500 font-semibold bg-red-500/50 backdrop-blur-xs text-sm min-w-40`}>🔴 {msg}</strong>
+            <strong className={`
+                ${abs && "absolute -bottom-2 right-3"}  
+                px-2 py-0.5 rounded-xl text-fit-ff 
+                border border-red-500 font-semibold 
+                bg-red-700/50 backdrop-blur-xs font-inter
+                text-sm inline-flex gap-1 items-center`}
+            >
+                <LuCircleX className="fill-red-500" />
+                {msg}
+            </strong>
         )
     }
 

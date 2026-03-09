@@ -4,7 +4,7 @@ import ButtonMenu from "@/components/ui/buttons/button-menu"
 
 export default function LandingHeader() {
     return (
-        <header className='cust-grid-stack p-5 overflow-hidden'>
+        <header className='cust-grid-stack p-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
             <figure className="relative scale-120 -z-1 after:absolute after:inset-0 after:bg-black/40 ">
                 <Image
                     src="/welcome.jpg"

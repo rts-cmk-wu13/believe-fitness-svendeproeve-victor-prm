@@ -1,20 +1,21 @@
 "use server"
 import z from "zod";
 import { compareFormData } from "@/lib/utils";
-import { newsletterSchema } from "@/lib/schemas";
+import { contactSchema } from "@/lib/schemas";
 import { fetchFromAPI } from "@/lib/dal/general";
 
-//To-do: check if user is logged in, and already signed up
-
-export default async function subscribeToNewsletter(prevState, formData) {
+export default async function sendMessage(prevState, formData) {
 
     const values = {
+        name: formData.get("name"),
         email: formData.get("email"),
+        message: formData.get("message"),
     };
 
-    compareFormData(values, prevState)
+    compareFormData(values, prevState);
 
-    const validate = newsletterSchema.safeParse(values);
+
+    const validate = contactSchema.safeParse(values);
 
     if (!validate.success) {
         return {
@@ -23,7 +24,7 @@ export default async function subscribeToNewsletter(prevState, formData) {
         };
     }
 
-    const result = await fetchFromAPI("/api/v1/newsletter", { method: "POST", values: values })
+    const result = await fetchFromAPI("/api/v1/messages", { method: "POST", values: values })
     console.log("🟢", result)
 
     return result;
