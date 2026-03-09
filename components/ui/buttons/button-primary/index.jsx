@@ -1,5 +1,4 @@
 "use client"
-
 import Link from "next/link"
 
 export default function ButtonPrimary({ ...props }) {
@@ -26,7 +25,7 @@ export default function ButtonPrimary({ ...props }) {
             {...(props.onClick && props.onClick)} // Attach onClick if passed as props
             {...(props.disabled && props.disabled)} // Attach disabled if passed as props
         >
-            {label}
+            {props.label}
         </button>
     )
 } 

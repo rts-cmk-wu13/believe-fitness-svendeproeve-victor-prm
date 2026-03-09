@@ -1,4 +1,4 @@
-import { fetchFromAPI } from "@/dal/general"
+import { fetchFromAPI } from "@/lib/dal/general"
 import LandingSection from ".."
 import NewsItem from "./news-item"
 import HorizontalDivider from "@/components/ui/horizontal-divider"

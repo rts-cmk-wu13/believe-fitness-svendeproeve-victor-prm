@@ -64,15 +64,23 @@
       transform: translateX(0%);
     }
   }
-} 
+}
 
 @layer components {
   .cust-button {
-     @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold
+    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0
   }
 
   .cust-grid-stack {
     @apply grid *:col-start-1 *:row-start-1
+  }
+
+  .cust-input {
+    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-4xl py-3 px-5 w-full grow placeholder:capitalize
+  }
+
+  .cust-form {
+    @apply flex gap-4 w-full max-w-160 sm:max-w-140
   }
 }
 
