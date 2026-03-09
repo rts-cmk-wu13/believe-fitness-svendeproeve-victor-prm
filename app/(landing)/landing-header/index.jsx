@@ -17,9 +17,9 @@ export default function LandingHeader() {
             </figure>
 
             <hgroup className="self-end flex flex-col gap-3 container mx-auto">
-                <h1 className="font-poppins font-bold text-fit-reg text-4xl">
+                <h1 className="font-poppins font-semibold text-fit-reg text-4xl">
                     <span className="block text-2xl">Welcome to</span>
-                    Believe Fitness
+                    <span className="font-bold italic uppercase">Believe Fitness</span>
                 </h1>
                 <div className="flex gap-3">
                     <ButtonPrimary label="Classes" type="link" href="/classes" />

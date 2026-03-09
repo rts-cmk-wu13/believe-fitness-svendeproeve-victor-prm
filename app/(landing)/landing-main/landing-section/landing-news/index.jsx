@@ -1,6 +1,7 @@
 import { fetchFromAPI } from "@/dal/general"
 import LandingSection from ".."
 import NewsItem from "./news-item"
+import HorizontalDivider from "@/components/ui/horizontal-divider"
 
 export default async function LandingNews() {
     const news = await fetchFromAPI("/api/v1/news")
@@ -16,7 +17,7 @@ export default async function LandingNews() {
                     )
                 }
             </ul>
-            <hr className="w-1/5 min-w-10 border mx-auto mt-12"/>
+            <HorizontalDivider />
         </LandingSection>
     )
 }
