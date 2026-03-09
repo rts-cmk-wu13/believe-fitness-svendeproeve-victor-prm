@@ -64,7 +64,16 @@
       transform: translateX(0%);
     }
   }
+} 
 
+@layer components {
+  .cust-button {
+     @apply bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold
+  }
+
+  .cust-grid-stack {
+    @apply grid *:col-start-1 *:row-start-1
+  }
 }
 
 body {

@@ -1,8 +1,14 @@
+import PageContainer from "@/components/layout/page-container";
+import LandingHeader from "./(landing)/landing-header";
+import LandingFooter from "./(landing)/landing-footer";
+import LandingMain from "./(landing)/landing.main";
+
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center">
-      <p className="text-8xl font-poppins">Poppins</p>
-      <p className="text-8xl">Inter</p>
-    </div>
+    <PageContainer>
+      <LandingHeader />
+      <LandingMain/>
+      <LandingFooter />
+    </PageContainer>
   );
 }
