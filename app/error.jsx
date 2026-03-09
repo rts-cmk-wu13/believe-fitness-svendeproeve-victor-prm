@@ -1,15 +1,16 @@
 "use client"
 import Link from "next/link"
-import { FaArrowRight } from "react-icons/fa"
+import { LuArrowRight } from "react-icons/lu";
+
 
 export default function Error() {
     return (
         <div className="fixed bg-fit-reg inset-0 flex items-center justify-center font-inter">
             <hgroup className="text-dance-e9 text-center">
-                <h1 className="text-8xl font-Poppins">Ouch!</h1>
+                <h1 className="text-8xl font-Poppins">Av!</h1>
                 <p className="text-xl">Noget gik galt</p>
 
-                <Link className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70" href={"/"}>Gå til forsiden <FaArrowRight /></Link>
+                <Link className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70" href={"/"}>Gå til forsiden <LuArrowRight /></Link>
             </hgroup>
         </div>
     )
