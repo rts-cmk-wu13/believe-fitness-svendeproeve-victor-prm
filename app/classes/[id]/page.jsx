@@ -30,7 +30,7 @@ export default async function ClassDetailPage({ params }) {
         <PageContainer>
             <NavHeader />
             <ClassHero data={d}/>
-            <section className="flex flex-col gap-8 max-w-160 px-10 pb-20">
+            <section className="flex flex-col gap-8 max-w-160 px-5 pb-20">
                 <hgroup>
                     <h2 className="text-2xl font-poppins font-semibold mb-2">Class Information</h2>
                     <p className="font-semibold">{formattedClassTime(d.classDay, d.classTime)}</p>

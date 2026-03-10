@@ -20,15 +20,15 @@ export default async function ClassHero({ ...props }) {
                     alt={`Image for event named ${d.className}`}
                     width={1500}
                     height={1500}
-                    className="size-full object-cover"
+                    className="size-full object-cover object-top"
                     loading="eager"
                 />
             </figure>
             <hgroup className="flex flex-col gap-3 size-fit z-10 self-end">
-                <h1 className="ml-5 font-poppins font-semibold text-fit-reg text-2xl sm:text-4xl">
+                <h2 className="font-poppins font-semibold text-fit-reg text-2xl sm:text-4xl">
                     {d.className}
-                </h1>
-                <div className="flex justify-between gap-8 rounded-[100vw] bg-fit-drk/25 backdrop-blur-3xl pl-6 p-2">
+                </h2>
+                <div className="flex justify-between gap-8 rounded-[100vw] bg-fit-ff/33 backdrop-blur-3xl pl-6 p-2">
                     <RatingMeter rating={currentRating} enlarge={true} />
                     {!props.link ?
                         (<ButtonPrimary label="Rate" />)

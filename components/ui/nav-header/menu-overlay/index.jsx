@@ -7,7 +7,7 @@ export default function MenuOverlay({ ...props }) {
 
     return (
         <div className={
-            `fixed inset-0 h-full bg-fit-ff -z-10
+            `fixed inset-0 h-full bg-fit-ff/66 backdrop-blur-3xl -z-10
             ${props.toggle ? "animate-fade-in" : `${props.toggleInitialized ? "animate-fade-out" : "hidden"}`}
             `}
         >

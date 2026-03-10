@@ -12,10 +12,12 @@ export default async function ClassList() {
 
         <main className="flex flex-col gap-8">
             <ClassHero data={shuffledClasses[0]} link={true} />
-            <div className="grid grid-flow-col auto-cols-[clamp(16rem,20vw,28rem)] gap-6 overflow-x-auto pb-8 px-5 scroll-smooth snap-x snap-mandatory">
-                {shuffledClasses.map((cl, idx) => (idx > 0 && <ClassItem key={idx} data={cl} />))}
+            <div className="flex flex-col gap-2 px-5 text-xl font-poppins font-semibold">
+                <h2>Classes for you</h2>
+                <div className="grid grid-flow-col auto-cols-[clamp(16rem,20vw,28rem)] gap-6 overflow-x-auto pb-8 scroll-smooth snap-x snap-mandatory">
+                    {shuffledClasses.map((cl, idx) => (idx > 0 && <ClassItem key={idx} data={cl} />))}
+                </div>
             </div>
-
         </main>
     )
 }
