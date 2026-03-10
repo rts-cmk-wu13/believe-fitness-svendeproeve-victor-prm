@@ -1,11 +1,10 @@
 import Image from "next/image"
 import ButtonPrimary from "@/components/ui/buttons/button-primary"
 import CompanyLogo from "@/components/ui/company-logo"
-import TopNav from "@/components/ui/top-nav"
 
-export default function LandingHeader() {
+export default function LandingHero() {
     return (
-        <header className='cust-grid-stack bg-fit-drk p-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
+        <section className='cust-grid-stack bg-fit-drk p-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
             <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in">
                 <Image
                     src="/welcome.jpg"
@@ -27,7 +26,6 @@ export default function LandingHeader() {
                     <ButtonPrimary label="Login" type="link" href="/login" />
                 </div>
             </hgroup>
-           <TopNav />
-        </header>
+        </section>
     )
 }

@@ -1,5 +1,6 @@
 import PageContainer from "@/components/layout/page-container";
-import LandingHeader from "./(landing)/landing-header";
+import NavHeader from "@/components/ui/nav-header";
+import LandingHero from "./(landing)/landing-hero";
 import LandingMain from "./(landing)/landing-main";
 import LandingFooter from "./(landing)/landing-footer";
 
@@ -7,8 +8,9 @@ import LandingFooter from "./(landing)/landing-footer";
 export default function Home() {
   return (
     <PageContainer>
-      <LandingHeader />
-      <LandingMain/>
+      <NavHeader />
+      <LandingHero />
+      <LandingMain />
       <LandingFooter />
     </PageContainer>
   );
