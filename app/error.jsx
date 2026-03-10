@@ -13,7 +13,7 @@ export default function Error({ error }) {
                 <h1 className="text-8xl font-Poppins">Ouch!</h1>
                 <p className="text-xl">Something went wrong...</p>
                 {error.message && <p className="text-xl opacity-60">{capitalizeFirstLetter(error.message)}</p>}
-                <div className="flex gap-4">
+                <div className="flex gap-4 mx-auto w-fit">
                     <button
                         className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70"
                         onClick={() => reset()}>

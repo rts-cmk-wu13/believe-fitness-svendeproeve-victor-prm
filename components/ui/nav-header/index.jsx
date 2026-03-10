@@ -7,12 +7,12 @@ import { usePathname } from "next/navigation";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import MenuOverlay from "./menu-overlay";
 
 export default function NavHeader() {
     const [toggle, setToggle] = useState(false)
     const [toggleInitialized, setToggleInitiatoggleInitialized] = useState(false)
-
     const [scrollThreshold, setScrollThreshold] = useState(false);
 
     useEffect(() => {
@@ -23,6 +23,17 @@ export default function NavHeader() {
         }
     }, []);
 
+    const handleToggle = () => {
+        setToggle(!toggle)
+        !toggleInitialized && setToggleInitiatoggleInitialized(true)
+    }
+
+    const handleBack = () => {
+        router.back() || router.push('/') 
+    }
+
+    const router = useRouter();
+    console.log(router)
     let title = usePathname();
 
     switch (title) {
@@ -36,13 +47,6 @@ export default function NavHeader() {
 
     const isHome = title === "home";
 
-    console.log(title)
-
-    const handleToggle = () => {
-        setToggle(!toggle)
-        !toggleInitialized && setToggleInitiatoggleInitialized(true)
-    }
-
     /*  console.log(title) */
 
     return (
@@ -51,7 +55,10 @@ export default function NavHeader() {
                 {/* Only show button and title on pages that aren't the landing page */}
                 {!isHome &&
                     <div className="flex items-center gap-4">
-                        <ButtonMenu className={`${scrollThreshold ? "text-fit-9e" : "text-fit-9e"}`}>
+                        <ButtonMenu
+                            className={`${scrollThreshold ? "text-fit-9e" : "text-fit-9e"}`}
+                            onClick={() => handleBack()}
+                        >
                             <LuArrowLeft />
                         </ButtonMenu>
                         <h1 className="text-fit-00 text-2xl">{capitalizeFirstLetter(title)}</h1>
