@@ -20,13 +20,13 @@ const initialState = {
 
 export default function LandingContact() {
     const [state, formAction, isPending] = useActionState(sendMessage, initialState);
-    /*  console.log(state) */
+    console.log(state)
 
     useEffect(() => {
-        if (state?.id) {
-            toast.success("Tak for din besked!")
+        if (state?.message?.id) {
+            toast.success("Thank you for your message!")
         }
-    }, [state?.id]);
+    }, [state?.message?.id]);
 
     return (
         <LandingSection title="Contact us">

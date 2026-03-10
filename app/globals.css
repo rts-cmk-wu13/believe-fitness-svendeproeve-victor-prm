@@ -1,19 +1,14 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   /* 50 %L */
   --color-fit-reg: #F1C40E;
-  /* 25 %L */
+  /* 5 %L */
   --color-fit-drk: #181401;
-  /* 25 %L */
-  --color-fit-med: #786207;
-  /* 75 %L */
-  --color-fit-lte: #f8e187;
+  /* 20 %L */
+  --color-fit-med: #604e06;
+  /* 80 %L */
+  --color-fit-lte: #f9e79f;
   /* 95 %L */
   --color-fit-bri: #fef9e7;
 
@@ -27,9 +22,10 @@
   --font-poppins: var(--font-poppins);
   --font-inter: var(--font-inter);
 
-  --animate-fade-in: fade-in 1s ease-out forwards;
-  --animate-fade-in-scale: fade-in-scale 1s ease-out forwards;
-  --animate-fade-in-ltr: fade-in-ltr 1s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-in-scale: fade-in-scale 0.6s ease-out forwards;
+  --animate-fade-in-ltr: fade-in-ltr 0.6s ease-out forwards;
+  --animate-skew-x: skew-x 0.6s ease-out 0.6s forwards;
 
   @keyframes fade-in {
     0% {
@@ -64,11 +60,23 @@
       transform: translateX(0%);
     }
   }
+
+  @keyframes skew-x {
+    0% {
+      opacity: 75;
+      transform: skewX(0deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: skewX(-12deg);
+    }
+  }
 }
 
 @layer components {
   .cust-button {
-    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0 hover:bg-fit-lte hover:italic cursor-pointer
+    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0 duration-300 hover:bg-fit-lte cursor-pointer *:duration-300 hover:*:-skew-x-12
   }
 
   .cust-grid-stack {
@@ -76,7 +84,7 @@
   }
 
   .cust-input {
-    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-3xl py-3 px-5 w-full grow placeholder:capitalize focus:text-fit-00 focus:ring-fit-6f
+    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-3xl py-3 px-5 w-full grow placeholder:capitalize focus:text-fit-00 focus:ring-fit-6f bg-fit-ff
   }
 
   .cust-form {

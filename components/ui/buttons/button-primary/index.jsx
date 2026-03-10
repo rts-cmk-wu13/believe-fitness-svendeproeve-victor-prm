@@ -13,7 +13,7 @@ export default function ButtonPrimary({ ...props }) {
                 className={`cust-button disabled:gray-400 disabled:text-black/75 disabled:opacity-66 disabled:cursor-not-allowed ${props.className}`}
                 {...(props.disabled && props.disabled)} // Attach disabled if passed as props
             >
-                {props.label}
+                <p>{props.label}</p>
             </Link>
         )
     }
@@ -25,7 +25,7 @@ export default function ButtonPrimary({ ...props }) {
             {...(props.onClick && props.onClick)} // Attach onClick if passed as props
             {...(props.disabled && props.disabled)} // Attach disabled if passed as props
         >
-            {props.label}
+            <p>{props.label}</p>
         </button>
     )
 } 

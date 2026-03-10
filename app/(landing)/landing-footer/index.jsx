@@ -1,11 +1,12 @@
 import HorizontalDivider from "@/components/ui/horizontal-divider"
+import CompanyLogo from "@/components/ui/company-logo"
 
 export default function LandingFooter() {
     return (
         <footer id="footer" className="container mx-auto flex flex-col items-center w-full gap-3 p-6 self-baseline">
             <HorizontalDivider />
             <div className="flex flex-col items-center font-poppins">
-                <p className="text-4xl font-bold italic uppercase text-fit-reg">Believe Fitness</p>
+                <p className="text-4xl"><CompanyLogo /></p>
                 <small className="text-lg font-bold">Train like a pro</small>
             </div>
 

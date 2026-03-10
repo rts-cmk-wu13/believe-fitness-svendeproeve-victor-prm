@@ -24,13 +24,13 @@ export default function LandingNewsletter() {
 
     useEffect(() => {
         if (state?.id) {
-            toast.success("Tak for din tilmelding")
+            toast.success("Thanks for subscribing!")
         }
     }, [state?.id]);
 
 
     return (
-        <LandingSection title="Sign up for our newsletter">
+        <LandingSection title="Sign up for our newsletter" className="bg-fit-bri">
             <p className="cust-body-text">Sign up to receive the latest news and announcements from Believe Fitness.</p>
             <form className="cust-form" action={formAction} noValidate>
                 <InputField type="email" name="email" label="email" defaultValue={state?.values?.email} errors={state?.errors?.email} />
