@@ -9,7 +9,7 @@ export default function Custom404() {
                 <h1 className="text-8xl font-Poppins">404</h1>
                 <p className="text-xl">This content does not exist!</p>
 
-                <Link className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70" href={"/"}>Frontpage <LuArrowRight /></Link>
+                <Link className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70" href={"/"}>Back to home <LuArrowRight /></Link>
             </hgroup>
         </div>
     )
