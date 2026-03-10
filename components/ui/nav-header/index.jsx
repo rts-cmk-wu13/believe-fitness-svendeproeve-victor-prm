@@ -33,7 +33,6 @@ export default function NavHeader() {
     }
 
     const router = useRouter();
-    console.log(router)
     let title = usePathname();
 
     switch (title) {
@@ -50,8 +49,8 @@ export default function NavHeader() {
     /*  console.log(title) */
 
     return (
-        <header className={`fixed w-screen left-1/2 -translate-x-1/2 z-100 transition-colors duration-300 ${toggle ? "h-screen" : "h-fit"} ${scrollThreshold ? "bg-fit-ff/10 backdrop-blur-3xl" : "bg-black/0 backdrop-blur-none"}`}>
-            <nav className={`relative flex mx-auto w-full container items-center py-2 p-3  max-w-[1360]`}>
+        <header className={`fixed w-screen left-1/2 -translate-x-1/2 z-100 transition-colors duration-300  max-w-[1360] ${toggle ? "h-screen" : "h-fit"} ${scrollThreshold ? "bg-fit-ff/10 backdrop-blur-3xl" : "bg-black/0 backdrop-blur-none"}`}>
+            <nav className={`relative flex mx-auto w-full container items-center py-2 p-3`}>
                 {/* Only show button and title on pages that aren't the landing page */}
                 {!isHome &&
                     <div className="flex items-center gap-4">

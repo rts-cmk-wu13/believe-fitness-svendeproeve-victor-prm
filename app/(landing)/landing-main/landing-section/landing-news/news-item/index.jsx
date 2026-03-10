@@ -2,18 +2,19 @@ import Image from "next/image"
 
 
 export default function NewsItem({ ...props }) {
-    console.log(props.data.asset)
+    const d = props.data
+    
     return (
         <article className="flex flex-col gap-3 text-black font-inter">
-            <h3 className="font-poppins font-semibold text-2xl">{props.data.title}</h3>
+            <h3 className="font-poppins font-semibold text-2xl">{d.title}</h3>
             <Image
-                alt="Hej"
-                src={props.data.asset.url}
+                alt={`Image for the news article "${d.title}"`}
+                src={d.asset.url}
                 width={1500}
                 height={1000}
                 className="rounded-md"
             />
-            <p className="">{props.data.text}</p>
+            <p className="">{d.text}</p>
         </article>
     )
 }
