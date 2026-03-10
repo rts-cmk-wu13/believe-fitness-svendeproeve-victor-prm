@@ -3,7 +3,7 @@ import TopNav from "@/components/ui/nav-header";
 import ClassList from "./class-list";
 
 
-export default function Home() {
+export default function ClassPage() {
     return (
         <PageContainer>
             <TopNav />

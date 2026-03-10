@@ -29,44 +29,50 @@ export default function NavHeader() {
     }
 
     const handleBack = () => {
-        router.back() || router.push('/') 
+        router.back() || router.push('/')
     }
 
     const router = useRouter();
-    let title = usePathname();
+    const path = usePathname();
 
-    switch (title) {
-        case "/":
-            title = "home";
-            break;
-        case "/classes":
-            title = "popular classes";
-            break;
+    let title;
+    let atHome;
+    let atClasses;
+
+    if (path === "/") {
+        title = "home";
+        atHome = true;
+    }
+    else if (path.startsWith("/classes/")) {
+        title = "Class details"
+        atClasses = true;
+    }
+    else if (path.startsWith("/classes")) {
+        title = "Popular classes"
+        atClasses = true;
     }
 
-    const isHome = title === "home";
-
-    /*  console.log(title) */
+    console.log(title)
 
     return (
-        <header className={`fixed w-screen left-1/2 -translate-x-1/2 z-100 transition-colors duration-300  max-w-[1360] ${toggle ? "h-screen" : "h-fit"} ${scrollThreshold ? "bg-fit-ff/10 backdrop-blur-3xl" : "bg-black/0 backdrop-blur-none"}`}>
+        <header className={`fixed w-screen left-1/2 -translate-x-1/2 z-100 transition-colors duration-300  max-w-[1360] ${toggle ? "h-screen" : "h-fit"} ${scrollThreshold ? "bg-fit-drk/25 backdrop-blur-3xl" : "bg-black/0 backdrop-blur-none"}`}>
             <nav className={`relative flex mx-auto w-full container items-center py-2 p-3`}>
                 {/* Only show button and title on pages that aren't the landing page */}
-                {!isHome &&
+                {!atHome &&
                     <div className="flex items-center gap-4">
                         <ButtonMenu
-                            className={`${scrollThreshold ? "text-fit-9e" : "text-fit-9e"}`}
+                            className={`${atClasses || atHome ? "text-fit-ff" : "text-fit-9e"}`}
                             onClick={() => handleBack()}
                         >
                             <LuArrowLeft />
                         </ButtonMenu>
-                        <h1 className="text-fit-00 text-2xl">{capitalizeFirstLetter(title)}</h1>
+                        <h1 className={`font-poppins font-medium text-2xl drop-shadow-md drop-shadow-fit-00/25 ${atClasses ? "text-fit-ff" : "text-fit-00"}`}>{capitalizeFirstLetter(title)}</h1>
                     </div>
                 }
                 {/* Menu button and menu overlay */}
                 <ButtonMenu
                     onClick={() => handleToggle()}
-                    className={`ml-auto ${isHome ? `${toggle || scrollThreshold ? "text-fit-9e" : "text-fit-ff"} ml-auto` : "text-fit-9e"}`}>
+                    className={`ml-auto ${atClasses || atHome ? `${toggle ? "text-fit-9e" : "text-fit-ff"}` : "text-fit-9e"}`}>
                     <LuMenu />
                 </ButtonMenu>
                 <MenuOverlay

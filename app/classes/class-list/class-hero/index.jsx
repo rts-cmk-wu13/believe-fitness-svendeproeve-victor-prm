@@ -1,0 +1,42 @@
+import Image from "next/image";
+import ButtonPrimary from "@/components/ui/buttons/button-primary";
+import RatingMeter from "../class-item/rating-meter";
+import { fetchFromAPI } from "@/lib/dal/general";
+import { averageClassRating } from "@/lib/utils";
+
+export default async function ClassHero({ ...props }) {
+    const d = props.data;
+
+    const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
+    const currentRating = averageClassRating(ratings)
+
+    console.log(d)
+
+    return (
+        <section className='cust-grid-stack bg-fit-drk overflow-hidden p-5 rounded-[0_0_3rem_3rem] h-fit'>
+            <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in max-h-140">
+                <Image
+                    src={d.asset.url}
+                    alt={`Image for event named ${d.className}`}
+                    width={1500}
+                    height={1500}
+                    className="size-full object-cover"
+                    loading="eager"
+                />
+            </figure>
+            <hgroup className="flex flex-col gap-3 size-fit z-10 self-end">
+                <h1 className="ml-5 font-poppins font-semibold text-fit-reg text-2xl sm:text-4xl">
+                    {d.className}
+                </h1>
+                <div className="flex justify-between gap-8 rounded-[100vw] bg-fit-drk/25 backdrop-blur-3xl pl-6 p-2">
+                    <RatingMeter rating={currentRating} enlarge={true} />
+                    {!props.link ?
+                        (<ButtonPrimary label="Rate" />)
+                        :
+                        (<ButtonPrimary label="See more" type="link" href={`/classes/${d.id}`} />)}
+
+                </div>
+            </hgroup>
+        </section>
+    )
+}

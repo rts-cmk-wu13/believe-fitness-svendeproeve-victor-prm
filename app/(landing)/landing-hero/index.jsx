@@ -5,7 +5,7 @@ import CompanyLogo from "@/components/ui/company-logo"
 export default function LandingHero() {
     return (
         <section className='cust-grid-stack bg-fit-drk p-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
-            <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in">
+            <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in max-h-140">
                 <Image
                     src="/welcome.jpg"
                     alt="People doing crunches in a gym"

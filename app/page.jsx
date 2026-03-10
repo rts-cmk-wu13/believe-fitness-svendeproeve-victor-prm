@@ -5,7 +5,7 @@ import LandingMain from "./(landing)/landing-main";
 import LandingFooter from "./(landing)/landing-footer";
 
 
-export default function Home() {
+export default function HomePage() {
   return (
     <PageContainer>
       <NavHeader />
