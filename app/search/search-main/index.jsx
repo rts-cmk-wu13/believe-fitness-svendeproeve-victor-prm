@@ -1,36 +1,93 @@
+"use client"
+
 import { fetchFromAPI } from "@/lib/dal/general"
 import AppMain from "@/components/layout/app-main"
 import PageSection from "@/components/layout/page-section"
 import CardList from "@/components/ui/card-list"
 import ClassItem from "@/app/classes/class-main/class-item"
 import ClassTrainer from "@/app/classes/class-main/class-trainer"
-
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
+import SpinningLoader from "@/components/ui/spinning-loader"
 import SearchBar from "./search-bar"
 
 
+export default function SearchMain() {
+    const [classes, setClasses] = useState([]);
+    const [trainers, setTrainers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const searchParams = useSearchParams()
+    const search = searchParams.get('q')
 
+    /*  console.log(search) */
 
-export default async function SearchMain() {
-    const classes = await fetchFromAPI("/api/v1/classes")
-    const trainers = await fetchFromAPI("/api/v1/trainers")
+    useEffect(() => {
+        const fetchClasses = async () => {
+            const response = await fetchFromAPI("/api/v1/classes")
+            setClasses(response);
+        };
+
+        const fetchTrainers = async () => {
+            const response = await fetchFromAPI("/api/v1/trainers")
+            setTrainers(response);
+        };
+        fetchClasses();
+        fetchTrainers();
+        setIsLoading(false);
+    }, []);
+
+    const filteredClasses = search ?
+        classes.filter(cl =>
+            cl?.className?.toLowerCase().startsWith(search?.toLowerCase())
+        )
+        :
+        classes;
+
+    const filteredTrainers = search ?
+        trainers.filter(cl =>
+            cl?.trainerName?.toLowerCase().startsWith(search?.toLowerCase())
+        )
+        :
+        trainers;
 
     console.log(trainers)
+
+    const EmptyMessage = () => {
+        return <p className="font-inter">Your search did not give any results. Try to search for something else.</p>
+    }
+
+    if (isLoading) return <SpinningLoader />
 
     return (
         <AppMain>
             <PageSection className="pb-0">
                 <SearchBar />
             </PageSection>
-            <PageSection title="Popular Classes">
-                <CardList variant="horizontal">
-                    {classes.map((cl, idx) => (<ClassItem key={idx} data={cl} />))}
-                </CardList>
+            <PageSection title={`Classes [${filteredClasses.length}]`}>
+                {
+                    filteredClasses.length ? (
+                        <CardList variant="horizontal">
+                            {filteredClasses.map((cl, idx) => (<ClassItem key={idx} data={cl} />))}
+                        </CardList>
+                    ) : (
+                        <EmptyMessage />
+                    )
+                }
+
             </PageSection>
-            <PageSection title="Popular Trainers">
-                <CardList>
-                    {trainers.map((cl, idx) => (<ClassTrainer key={idx} data={cl} />))}
-                </CardList>
+            <PageSection title={`Trainers [${filteredTrainers.length}]`}>
+                {
+                    filteredTrainers.length ? (
+                        <CardList >
+                            {filteredTrainers.map((cl, idx) => (<ClassTrainer key={idx} data={cl} />))}
+                        </CardList>
+                    ) : (
+                        <EmptyMessage />
+                    )
+                }
             </PageSection>
         </AppMain>
     )
 }
+
+

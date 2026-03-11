@@ -1,10 +1,7 @@
-import { LuDumbbell } from "react-icons/lu";
+import SpinningLoader from "@/components/ui/spinning-loader"
 
-
-export default function Custom404() {
+export default function LoadingScreen() {
     return (
-        <div className="fixed bg-fit-reg backdrop-blur-sm inset-0 flex items-center justify-center font-inter">
-            <LuDumbbell className="size-12 animate-spin"/>
-        </div>
+        <SpinningLoader />
     )
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image";
 import RatingMeter from "./rating-meter";
@@ -5,11 +7,21 @@ import { formattedClassTime } from "@/lib/utils"
 import { fetchFromAPI } from "@/lib/dal/general";
 import { averageClassRating } from "@/lib/utils";
 
+import { useState, useEffect } from "react";
 
-
-export default async function ClassItem({ ...props }) {
+export default function ClassItem({ ...props }) {
     const d = props.data;
-    const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
+    const [ratings, setRatings] = useState([]);
+
+    useEffect(() => {
+        const fetchRatings = async () => {
+            const response = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
+            setRatings(response);
+        };
+
+        fetchRatings();
+    }, []);
+
     const currentRating = averageClassRating(ratings)
 
     return (
@@ -25,9 +37,9 @@ export default async function ClassItem({ ...props }) {
                 <Link
                     href={`/classes/${d.id}`}
                     className={`after:absolute after:inset-0`}
-                    >
+                >
                     <h3 className="font-poppins font-semibold ">
-                        {d.className}               
+                        {d.className}
                     </h3>
                 </Link>
                 <small className="font-semibold">{formattedClassTime(d.classDay, d.classTime)}</small>

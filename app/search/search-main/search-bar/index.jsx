@@ -7,27 +7,24 @@ import { usePathname } from "next/navigation";
 import { LuSearch } from "react-icons/lu";
 import { debounce } from "lodash";
 
-export default function SearchBar({ ...props }) {
+export default function SearchBar() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
-    console.log(searchParams.get("q"))
-
     const handleSearch = (e) => {
         const searchQuery = e.target.value;
-
-        if (!searchQuery.length) {
-            router.push(pathname)
-            return;
-        }
-
         const params = new URLSearchParams(searchParams.toString())
 
         const debouncedQuery = debounce(() => {
-            params.set("q", searchQuery)
-            router.push(pathname + '?' + params.toString())
-        }, 1000)
+            if (searchQuery.length) {
+                params.set("q", searchQuery)
+                router.push(pathname + '?' + params.toString())
+            } else {
+                router.push(pathname)
+            }
+
+        }, 300)
         debouncedQuery()
     }
 

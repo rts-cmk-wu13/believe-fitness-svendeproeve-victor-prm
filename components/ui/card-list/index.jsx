@@ -8,7 +8,6 @@ export default function CardList({ children, variant = "vertical", }) {
     const scrollRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
-    const [showItems, setShowItems] = useState(false);
 
 
     // Update scroll buttons visibility
