@@ -123,3 +123,20 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+/* Splide */
+.splide__pagination {
+  @apply bottom-10!
+}
+
+.splide__pagination__page {
+  @apply opacity-100!
+}
+
+.splide__pagination>li>button {
+  @apply bg-fit-ff!
+}
+
+.splide__pagination__page.is-active {
+  @apply bg-fit-reg!
+}
