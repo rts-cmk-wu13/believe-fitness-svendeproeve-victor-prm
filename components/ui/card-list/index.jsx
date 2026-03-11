@@ -46,7 +46,7 @@ export default function CardList({ children, variant = "vertical", }) {
     const listClass =
         variant === "horizontal"
             ? "grid grid-flow-col auto-cols-[clamp(16rem,32vw,24rem)] gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory"
-            : "grid grid-cols-[repeat(auto-fill,minmax(clamp(172px,20vw,240px),1fr))] gap-2";
+            : "grid grid-cols-[repeat(auto-fit,clamp(20rem,32vw,24rem))] gap-6";
 
     return (
         <div className="">

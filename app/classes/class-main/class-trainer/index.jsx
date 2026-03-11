@@ -4,7 +4,7 @@ export default function ClassTrainer({ ...props }) {
     const d = props.data
 
     return (
-        <article className="flex items-center gap-4 pr-4 rounded-2xl overflow-clip p-0.5">
+        <article className="flex items-center gap-4 rounded-2xl">
             <Image
                 src={d.asset.url}
                 alt={`Profile image for trainer named ${d.trainerName}`}

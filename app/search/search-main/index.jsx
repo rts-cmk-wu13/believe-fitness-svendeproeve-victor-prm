@@ -3,6 +3,7 @@ import AppMain from "@/components/layout/app-main"
 import PageSection from "@/components/layout/page-section"
 import CardList from "@/components/ui/card-list"
 import ClassItem from "@/app/classes/class-main/class-item"
+import ClassTrainer from "@/app/classes/class-main/class-trainer"
 
 import SearchBar from "./search-bar"
 
@@ -26,7 +27,9 @@ export default async function SearchMain() {
                 </CardList>
             </PageSection>
             <PageSection title="Popular Trainers">
-                Hello
+                <CardList>
+                    {trainers.map((cl, idx) => (<ClassTrainer key={idx} data={cl} />))}
+                </CardList>
             </PageSection>
         </AppMain>
     )
