@@ -12,7 +12,7 @@ export default function NewsItem({ ...props }) {
                 src={d.asset.url}
                 width={1500}
                 height={1000}
-                className="rounded-md"
+                className="rounded-2xl"
             />
             <p className="">{d.text}</p>
         </article>

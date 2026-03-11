@@ -1,7 +1,14 @@
-export default function PageSection({children}){
-    return(
-        <section className='px-5 py-16'>
-            {children}
+export default function PageSection({ ...props }) {
+    return (
+        <section className={`
+            flex flex-col gap-4 text-fit-00 w-full container px-5 py-8 rounded-4xl mx-auto last-of-type:mb-20 
+            ${props.className || ""}
+            `
+            }>
+            {props.title && <h2 className={`font-poppins text-2xl font-semibold`}>
+                {props.title}
+            </h2>}
+            {props.children}
         </section>
     )
 }

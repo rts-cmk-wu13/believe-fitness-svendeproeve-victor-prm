@@ -4,7 +4,7 @@ import CompanyLogo from "@/components/ui/company-logo"
 
 export default function LandingHero() {
     return (
-        <section className='cust-grid-stack bg-fit-drk p-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
+        <section className='cust-grid-stack bg-fit-drk py-5 overflow-hidden rounded-[0_0_3rem_3rem]'>
             <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in max-h-140">
                 <Image
                     src="/welcome.jpg"
@@ -16,7 +16,7 @@ export default function LandingHero() {
                 />
             </figure>
 
-            <hgroup className="self-end flex flex-col gap-3 container mx-auto z-1">
+            <hgroup className="self-end flex flex-col gap-3 container mx-auto px-5 z-1">
                 <h1 className="font-poppins font-semibold text-fit-reg text-4xl">
                     <span className="block text-2xl">Welcome to</span>
                     <CompanyLogo lines={2}/>

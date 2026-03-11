@@ -4,14 +4,13 @@ import LandingHero from "./(landing)/landing-hero";
 import LandingMain from "./(landing)/landing-main";
 import LandingFooter from "./(landing)/landing-footer";
 
-
 export default function HomePage() {
   return (
     <PageContainer>
-      <NavHeader />
-      <LandingHero />
-      <LandingMain />
-      <LandingFooter />
+        <NavHeader />
+        <LandingHero />
+        <LandingMain />
+        <LandingFooter />
     </PageContainer>
   );
 }

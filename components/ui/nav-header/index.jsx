@@ -39,8 +39,11 @@ export default function NavHeader() {
     }
 
     if (path === "/") {
-        title = "home";
+        title = "Home";
         atHome = true;
+    }
+    if (path === "/search") {
+        title = "Search";
     }
     else if (path.startsWith("/classes/")) {
         title = "Class details"
@@ -55,7 +58,7 @@ export default function NavHeader() {
         <header className={`fixed w-screen left-1/2 -translate-x-1/2 z-100 transition-colors duration-300  max-w-[1360] ${toggle ? "h-screen" : "h-fit"} ${scrollThreshold ? "bg-fit-ff/33 backdrop-blur-3xl" : "bg-black/0 backdrop-blur-none"}`}>
             <nav className={`relative flex mx-auto w-full container items-center py-2 p-3`}>
                 {/* Only show button and title on pages that aren't the landing page */}
-                {!atHome &&
+                {(!toggle && !atHome) &&
                     <div className="flex items-center gap-4">
                         <ButtonMenu
                             className={`${atClasses || atHome ? "text-fit-reg" : "text-fit-9e"}`}
@@ -69,7 +72,7 @@ export default function NavHeader() {
                 {/* Menu button and menu overlay */}
                 <ButtonMenu
                     onClick={() => handleToggle()}
-                    className={`ml-auto ${atClasses || atHome ? `${toggle ? "text-fit-9e" : "text-fit-reg"}` : "text-fit-9e"}`}>
+                    className={`ml-auto ${atClasses || atHome ? `${toggle ? "text-fit-00" : "text-fit-reg"}` : "text-fit-9e"}`}>
                     <LuMenu />
                 </ButtonMenu>
                 <MenuOverlay

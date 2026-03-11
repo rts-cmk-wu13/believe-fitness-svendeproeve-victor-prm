@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from "@/lib/utils";
 
 
 
-export default function Error({ error }) {
+export default function Error({ error, reset }) {
     return (
         <div className="fixed bg-fit-reg inset-0 flex items-center justify-center font-inter">
             <hgroup className="text-dance-e9 text-center">
@@ -21,7 +21,7 @@ export default function Error({ error }) {
                         <LuRotateCw />
                     </button>
                     <Link
-                        className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70" 
+                        className="mt-8 ring-2 ring-black px-6 py-3 rounded-4xl cursor-pointer inline-flex gap-2 items-center hover:opacity-70"
                         href={"/"}>
                         Back to home
                         <LuArrowRight />

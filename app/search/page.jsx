@@ -1,13 +1,12 @@
 import PageContainer from "@/components/layout/page-container";
 import TopNav from "@/components/ui/nav-header";
-import ClassMain from "./class-main";
-
+import SearchMain from "./search-main";
 
 export default function ClassPage() {
     return (
         <PageContainer>
             <TopNav />
-            <ClassMain />
+            <SearchMain />
         </PageContainer>
     );
 }

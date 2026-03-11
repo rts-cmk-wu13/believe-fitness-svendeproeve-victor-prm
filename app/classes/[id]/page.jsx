@@ -1,8 +1,9 @@
 import PageContainer from "@/components/layout/page-container";
 import NavHeader from "@/components/ui/nav-header";
-import Image from "next/image";
+import ClassHero from "../class-main/class-hero";
+import ClassTrainer from "../class-main/class-trainer";
 import ButtonPrimary from "@/components/ui/buttons/button-primary";
-import ClassHero from "../class-list/class-hero";
+import PageSection from "@/components/layout/page-section";
 import { fetchFromAPI } from "@/lib/dal/general";
 import { formattedClassTime } from "@/lib/utils";
 import { notFound } from "next/navigation";
@@ -18,9 +19,6 @@ export default async function ClassDetailPage({ params }) {
 
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
-
-    console.log(d)
-
     const trainer = await fetchFromAPI(`/api/v1/trainers/${d.trainer.id}`)
     console.log(trainer)
 
@@ -29,8 +27,8 @@ export default async function ClassDetailPage({ params }) {
     return (
         <PageContainer>
             <NavHeader />
-            <ClassHero data={d}/>
-            <section className="flex flex-col gap-8 max-w-160 px-5 pb-20">
+            <ClassHero data={d} />
+            <PageSection>
                 <hgroup>
                     <h2 className="text-2xl font-poppins font-semibold mb-2">Class Information</h2>
                     <p className="font-semibold">{formattedClassTime(d.classDay, d.classTime)}</p>
@@ -38,24 +36,13 @@ export default async function ClassDetailPage({ params }) {
                 </hgroup>
                 <hgroup>
                     <h2 className="text-2xl font-poppins font-semibold mb-2">Trainer</h2>
-                    <article className="flex items-center gap-4 pr-4 rounded-2xl overflow-clip">
-                        <Image
-                            src={trainer.asset.url}
-                            alt={`Profile image for trainer named ${trainer.trainerName}`}
-                            width={1500}
-                            height={1500}
-                            className="size-24 object-cover rounded-2xl"
-                            loading="eager"
-                        />
-                        <p className="font-semibold">{trainer.trainerName}</p>
-                    </article>
+                    <ClassTrainer data={trainer} />
                 </hgroup>
                 <ButtonPrimary
                     label="Sign up"
-                    className="w-full"
+                    className="w-full max-w-120"
                 />
-            </section>
-
+            </PageSection>
         </PageContainer>
     )
 }
