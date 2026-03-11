@@ -1,7 +1,7 @@
 export default function PageSection({ ...props }) {
     return (
         <section className={`
-            flex flex-col gap-4 text-fit-00 w-full container px-5 py-8 rounded-4xl mx-auto last-of-type:mb-20 
+            flex flex-col gap-4 text-fit-00 w-full container px-5 rounded-4xl mx-auto last-of-type:mb-20 
             ${props.className || ""}
             `
             }>

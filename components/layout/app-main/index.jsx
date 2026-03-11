@@ -10,7 +10,7 @@ export default function AppMain({ ...props }) {
 
     return (
         <main id="main" className={`
-            text-black font-inter
+            text-black font-inter flex flex-col gap-4
             ${addPaddingTop ? "pt-14" : ""} 
             ${props.className || ""}
             `

@@ -1,15 +1,19 @@
 import { fetchFromAPI } from "@/lib/dal/general"
 import AppMain from "@/components/layout/app-main"
 import PageSection from "@/components/layout/page-section"
+import CardList from "@/components/ui/card-list"
 import ClassItem from "@/app/classes/class-main/class-item"
 
 import SearchBar from "./search-bar"
 
-import { LuSearch } from "react-icons/lu";
+
 
 
 export default async function SearchMain() {
     const classes = await fetchFromAPI("/api/v1/classes")
+    const trainers = await fetchFromAPI("/api/v1/trainers")
+
+    console.log(trainers)
 
     return (
         <AppMain>
@@ -17,9 +21,11 @@ export default async function SearchMain() {
                 <SearchBar />
             </PageSection>
             <PageSection title="Popular Classes">
-                Hello
+                <CardList variant="horizontal">
+                    {classes.map((cl, idx) => (<ClassItem key={idx} data={cl} />))}
+                </CardList>
             </PageSection>
-             <PageSection title="Popular Classes">
+            <PageSection title="Popular Trainers">
                 Hello
             </PageSection>
         </AppMain>
