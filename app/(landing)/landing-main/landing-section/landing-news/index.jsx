@@ -4,9 +4,7 @@ import NewsItem from "./news-item"
 import HorizontalDivider from "@/components/ui/horizontal-divider"
 
 export default async function LandingNews() {
-    const news = await fetchFromAPI("/api/v1/news")
-
-    console.log(news)
+    const news = await fetchFromAPI("/api/v1/news");
 
     return (
         <LandingSection title="News">

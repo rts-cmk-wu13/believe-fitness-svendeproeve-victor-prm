@@ -5,8 +5,7 @@ import TestimonialSlider from "@/app/(landing)/landing-main/landing-section/land
 
 export default async function LandingTestimonials() {
     const testimonials = await fetchFromAPI("/api/v1/testimonials")
-    console.log(testimonials)
-
+    
     return (
         <LandingSection className="px-0!">
             <div className="cust-grid-stack">

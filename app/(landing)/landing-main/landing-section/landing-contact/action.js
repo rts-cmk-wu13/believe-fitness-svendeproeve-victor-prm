@@ -11,12 +11,10 @@ export default async function sendMessage(prevState, formData) {
         email: formData.get("email"),
         message: formData.get("message"),
     };
-
+    
     compareFormData(values, prevState);
-
-
+    
     const validate = contactSchema.safeParse(values);
-
     if (!validate.success) {
         return {
             values,
@@ -25,7 +23,7 @@ export default async function sendMessage(prevState, formData) {
     }
 
     const result = await fetchFromAPI("/api/v1/messages", { method: "POST", values: values })
-    console.log("🟢", result)
+    /* console.log("🟢", result) */
 
     return result;
 }

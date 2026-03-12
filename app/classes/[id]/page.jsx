@@ -21,9 +21,6 @@ export default async function ClassDetailPage({ params }) {
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
     const trainer = await fetchFromAPI(`/api/v1/trainers/${d.trainer.id}`)
-    console.log(trainer)
-
-
 
     return (
         <PageContainer>

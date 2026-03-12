@@ -9,11 +9,10 @@ import { LuArrowRight } from "react-icons/lu"
 import ButtonSecondary from "@/components/ui/buttons/button-secondary"
 
 export default async function Page() {
-    /*  const session = await getSession()
-     console.log(session)
+     const session = await getSession()
      if (session) {
          redirect("/profile")
-     } */
+     }
 
     return (
         <PageContainer className="w-full max-w-140! mt-6 bg-fit-bri before:fixed before:inset-0 before:bg-fit-bri before:-z-10">

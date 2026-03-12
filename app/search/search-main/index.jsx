@@ -19,8 +19,6 @@ export default function SearchMain() {
     const searchParams = useSearchParams()
     const search = searchParams.get('q')
 
-    /*  console.log(search) */
-
     useEffect(() => {
         const fetchClasses = async () => {
             const response = await fetchFromAPI("/api/v1/classes")
@@ -35,8 +33,6 @@ export default function SearchMain() {
         fetchTrainers();
         setIsLoading(false);
     }, []);
-
-    console.log(classes,trainers)
 
     const filteredClasses = fuzzySearch(search, classes, ["className","trainer.trainerName","classDay"]);
     const filteredTrainers = fuzzySearch(search, trainers, ["trainerName"]);

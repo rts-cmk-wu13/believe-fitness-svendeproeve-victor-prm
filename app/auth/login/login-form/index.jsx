@@ -15,7 +15,6 @@ const initialState = {
 
 export default function LoginForm() {
     const [state, formAction, isPending] = useActionState(logUserIn, initialState);
-    /*  console.log(state) */
 
     return (
         <form className="cust-form flex-col" action={formAction} noValidate>

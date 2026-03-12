@@ -10,8 +10,6 @@ export default async function ClassHero({ ...props }) {
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
 
-    console.log(d)
-
     return (
         <section className='cust-grid-stack bg-fit-drk overflow-hidden py-5 rounded-[0_0_3rem_3rem] h-fit'>
             <figure className="relative scale-120 after:absolute after:inset-0 after:bg-black/40 animate-fade-in max-h-140">

@@ -26,7 +26,6 @@ export default async function logUserIn(prevState, formData) {
             errors: z.flattenError(validate.error).fieldErrors,
         };
     }
-    /* console.log("✅ validated") */
 
     const result = await fetchFromAPI("/auth/token",{method: "POST", values: values})
     /*  console.log("🟢", result) */

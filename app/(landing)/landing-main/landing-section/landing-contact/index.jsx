@@ -20,7 +20,6 @@ const initialState = {
 
 export default function LandingContact() {
     const [state, formAction, isPending] = useActionState(sendMessage, initialState);
-    console.log(state)
 
     useEffect(() => {
         if (state?.message?.id) {

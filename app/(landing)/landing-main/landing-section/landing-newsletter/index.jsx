@@ -18,9 +18,6 @@ const initialState = {
 
 export default function LandingNewsletter() {
     const [state, formAction, isPending] = useActionState(subscribeToNewsletter, initialState);
-    /* console.log("Errors", state.errors) */
-
-    console.log("state", state)
 
     useEffect(() => {
         if (state?.id) {
