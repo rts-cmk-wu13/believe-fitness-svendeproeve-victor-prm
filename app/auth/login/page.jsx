@@ -7,11 +7,11 @@ import AnimatedHeader from "../../splash/animated-header"
 import LoginForm from "./login-form"
 
 export default async function Page() {
-   /*  const session = await getSession()
+    const session = await getSession()
     console.log(session)
     if (session) {
         redirect("/profile")
-    } */
+    }
 
     return (
         <PageContainer className="w-full max-w-140! mt-6">
