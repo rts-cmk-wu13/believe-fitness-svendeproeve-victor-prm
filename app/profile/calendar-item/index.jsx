@@ -1,8 +1,7 @@
-
 import ButtonPrimary from "@/components/ui/buttons/button-primary";
 import ButtonSecondary from "@/components/ui/buttons/button-secondary";
 import { HiUsers } from "react-icons/hi2";
-import { LuExternalLink, LuCalendarX2 } from "react-icons/lu";
+import { LuArrowRight, LuCalendarX2 } from "react-icons/lu";
 
 
 export default function CalendarItem({ ...props }) {
@@ -24,14 +23,14 @@ export default function CalendarItem({ ...props }) {
 
             <div className="flex w-full items-center gap-2 justify-between">
                 <ButtonPrimary
-                    label={<span className="inline-flex gap-2 items-center">
-                        <p>Show class</p>
-                        <LuExternalLink className="size-5" />
-                    </span>}
+                    label="Show class"
+                     icon={<LuArrowRight />}
                     type="link"
                     href="/classes/2"
                 />
-                <ButtonSecondary label={<LuCalendarX2 className="size-5" />} />
+                <ButtonSecondary
+                    icon={<LuCalendarX2 />}
+                />
             </div>
         </article>
     )
