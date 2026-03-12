@@ -45,8 +45,11 @@ export default function NavHeader() {
     if (path === "/search") {
         title = "Search";
     }
+    if (path === "/profile") {
+        title = "My Profile";
+    }
     else if (path.startsWith("/classes/")) {
-        title = "Class details"
+        title = undefined
         atClasses = true;
     }
     else if (path.startsWith("/classes")) {
@@ -66,13 +69,16 @@ export default function NavHeader() {
                         >
                             <LuArrowLeft />
                         </ButtonMenu>
-                        <h1 className={`font-poppins font-medium text-2xl drop-shadow-md drop-shadow-fit-00/25 ${atClasses ? "text-fit-reg" : "text-fit-00"}`}>{capitalizeFirstLetter(title)}</h1>
+                        {title &&
+                            <h1 className={`font-poppins font-medium text-2xl drop-shadow-sm drop-shadow-fit-00/25 ${atClasses || atHome ? "text-fit-reg" : "text-fit-00"}`}>{capitalizeFirstLetter(title)}</h1>
+                        }
                     </div>
                 }
                 {/* Menu button and menu overlay */}
                 <ButtonMenu
                     onClick={() => handleToggle()}
-                    className={`ml-auto ${atClasses || atHome ? `${toggle ? "text-fit-00" : "text-fit-reg"}` : "text-fit-9e"}`}>
+                    className={`ml-auto ${toggle ? "text-fit-00" : atClasses || atHome ? "text-fit-reg" : "text-fit-9e"}`}
+                >
                     <LuMenu />
                 </ButtonMenu>
                 <MenuOverlay

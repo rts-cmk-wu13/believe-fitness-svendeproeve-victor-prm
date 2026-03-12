@@ -1,6 +1,7 @@
 "use client"
 
 import { LuCircleX } from "react-icons/lu";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default function InputField({ type, name, label, onChange, ...props }) {
     //Guard Clauses
@@ -38,7 +39,7 @@ export default function InputField({ type, name, label, onChange, ...props }) {
                                 name={name}
                                 id={name}
                                 type={type}
-                                placeholder={label}
+                                placeholder={capitalizeFirstLetter(props.placeholder) || capitalizeFirstLetter(label)}
                                 value={props.value}
                                 defaultValue={props.defaultValue}
                                 {...(onChange && { onChange })} // Attach onChange if passed as props  
@@ -56,7 +57,7 @@ export default function InputField({ type, name, label, onChange, ...props }) {
                                 className={`cust-input block h-60 ${props.className || ""}`}
                                 name={name}
                                 id={name}
-                                placeholder={label}
+                                placeholder={capitalizeFirstLetter(props.placeholder) || capitalizeFirstLetter(label)}
                                 value={props.value}
                                 defaultValue={props.defaultValue}
                                 {...(onChange && { onChange })} // Attach onChange if passed as props  

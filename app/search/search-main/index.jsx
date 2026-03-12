@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import SpinningLoader from "@/components/ui/spinning-loader"
 import SearchBar from "./search-bar"
-
+import { fuzzySearch } from "@/lib/fuzzy-search"
 
 export default function SearchMain() {
     const [classes, setClasses] = useState([]);
@@ -36,21 +36,10 @@ export default function SearchMain() {
         setIsLoading(false);
     }, []);
 
-    const filteredClasses = search ?
-        classes.filter(cl =>
-            cl?.className?.toLowerCase().startsWith(search?.toLowerCase())
-        )
-        :
-        classes;
+    console.log(classes,trainers)
 
-    const filteredTrainers = search ?
-        trainers.filter(cl =>
-            cl?.trainerName?.toLowerCase().startsWith(search?.toLowerCase())
-        )
-        :
-        trainers;
-
-    console.log(trainers)
+    const filteredClasses = fuzzySearch(search, classes, ["className","trainer.trainerName","classDay"]);
+    const filteredTrainers = fuzzySearch(search, trainers, ["trainerName"]);
 
     const EmptyMessage = () => {
         return <p className="font-inter">Your search did not give any results. Try to search for something else.</p>

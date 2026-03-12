@@ -27,7 +27,7 @@ export default function MenuOverlay({ ...props }) {
                     {
                         !isLoggedIn ? (
                             <li>
-                                <Link className="p-4" href={"/"}>Login</Link>
+                                <Link className="p-4" href={"/auth/login"}>Login</Link>
                             </li>
                         ) : (
                             <li>

@@ -7,7 +7,7 @@ export default function ButtonMenu({ onClick, ...props }) {
         return (
             <Link
                 href={href}
-                className={`size-fit cursor-pointer drop-shadow-md drop-shadow-fit-00/25 text-2xl p-2 ${props.className || ""}`}
+                className={`size-fit cursor-pointer drop-shadow-sm drop-shadow-fit-00/25 text-2xl p-2 ${props.className || ""}`}
                 {...(props.disabled && props.disabled)} // Attach disabled if passed as props
             >
                 {props.children}
@@ -18,7 +18,7 @@ export default function ButtonMenu({ onClick, ...props }) {
     return (
         <button
             type={type == "submit" ? "submit" : "button"}
-            className={`size-fit cursor-pointer drop-shadow-md drop-shadow-fit-00/25 text-2xl p-2 ${props.className || ""}`}
+            className={`size-fit cursor-pointer drop-shadow-sm drop-shadow-fit-00/25 text-2xl p-2 ${props.className || ""}`}
             {...(onClick && { onClick })} // Attach onClick if passed as props
             {...(props.disabled && props.disabled)} // Attach disabled if passed as props
         >

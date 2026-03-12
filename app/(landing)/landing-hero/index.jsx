@@ -23,7 +23,7 @@ export default function LandingHero() {
                 </h1>
                 <div className="flex gap-3">
                     <ButtonPrimary label="Classes" type="link" href="/classes" />
-                    <ButtonPrimary label="Login" type="link" href="/login" />
+                    <ButtonPrimary label="Login" type="link" href="/auth/login" />
                 </div>
             </hgroup>
         </section>

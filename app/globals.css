@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/forms";
 
 @theme inline {
   /* 50 %L */
@@ -22,11 +23,11 @@
   --font-poppins: var(--font-poppins);
   --font-inter: var(--font-inter);
 
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-fade-in-scale: fade-in-scale 0.6s ease-out forwards;
-  --animate-fade-in-ltr: fade-in-ltr 0.6s ease-out forwards;
-  --animate-fade-out: fade-out 0.6s ease-out forwards;
-  --animate-skew-x: skew-x 0.6s ease-out 0.6s forwards;
+  --animate-fade-in: fade-in 0.4s ease-out forwards;
+  --animate-fade-in-scale: fade-in-scale 0.4s ease-out forwards;
+  --animate-fade-in-ltr: fade-in-ltr 0.4s ease-out forwards;
+  --animate-fade-out: fade-out 0.4s ease-out forwards;
+  --animate-skew-x: skew-x 0.4s ease-out 0.6s forwards;
 
   @keyframes fade-in {
     0% {
@@ -91,7 +92,11 @@
 
 @layer components {
   .cust-button {
-    @apply size-fit bg-fit-reg py-3 px-6 rounded-4xl font-poppins font-semibold uppercase shrink-0 duration-300 hover:bg-fit-lte cursor-pointer *:duration-300 hover:*:-skew-x-12
+    @apply size-fit bg-fit-reg py-3 px-6 rounded-full font-poppins font-semibold uppercase shrink-0 duration-300 hover:bg-fit-lte cursor-pointer *:duration-300 hover:*:-skew-x-12
+  }
+
+  .cust-button-sec {
+    @apply border border-black size-fit py-3 px-6 rounded-full font-poppins font-semibold uppercase shrink-0 duration-300 hover:bg-fit-lte cursor-pointer *:duration-300 hover:*:-skew-x-12
   }
 
   .cust-grid-stack {
@@ -99,7 +104,7 @@
   }
 
   .cust-input {
-    @apply h-12 ring ring-fit-9e text-fit-9e font-inter rounded-3xl py-3 px-5 w-full grow placeholder:capitalize focus:text-fit-00 focus:ring-fit-6f bg-fit-ff
+    @apply h-12 border-fit-9e text-fit-6f font-inter rounded-3xl py-3 px-5 placeholder:opacity-60 w-full grow focus:text-fit-00 focus:border-fit-6f bg-fit-ff
   }
 
   .cust-form {

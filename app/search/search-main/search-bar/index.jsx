@@ -30,7 +30,7 @@ export default function SearchBar() {
 
     return (
         <div className="cust-grid-stack items-center">
-            <InputField name="search" type="search" className={"pl-12"} onChange={(e) => handleSearch(e)} defaultValue={searchParams.get("q")} />
+            <InputField name="search" type="search" placeholder="Class names, trainers & class days" className={"pl-12"} onChange={(e) => handleSearch(e)} defaultValue={searchParams.get("q")} />
             <span className="flex items-center justify-center size-12 z-10 pointer-events-none">
                 <LuSearch />
             </span>

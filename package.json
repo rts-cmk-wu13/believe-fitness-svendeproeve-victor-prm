@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
+    "fuse.js": "^7.1.0",
     "lodash": "^4.17.23",
     "next": "16.1.6",
     "react": "19.2.3",
@@ -19,6 +20,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",

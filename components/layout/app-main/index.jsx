@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation"
 
 export default function AppMain({ ...props }) {
     const path = usePathname();
-    const affectedRoutes = ["/search"]
+    const affectedRoutes = ["/search","/profile"]
     let addPaddingTop = true;
 
     if (!affectedRoutes.includes(path)) addPaddingTop = false;

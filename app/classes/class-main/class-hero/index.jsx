@@ -35,7 +35,6 @@ export default async function ClassHero({ ...props }) {
                             (<ButtonPrimary label="Rate" />)
                             :
                             (<ButtonPrimary label="See more" type="link" href={`/classes/${d.id}`} />)}
-
                     </div>
                 </hgroup>
             </div>

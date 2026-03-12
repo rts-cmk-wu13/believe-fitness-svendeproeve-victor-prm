@@ -13,7 +13,7 @@ export default async function LandingTestimonials() {
                 <figure className="relative after:absolute after:inset-0 after:bg-black/40">
                     <Image
                         src={"/splash_alt_full.jpg"}
-                        alt="Landrup Dans Logo"
+                        alt="Woman doing bicep curls"
                         width={1500}
                         height={1000}
                         className="object-cover h-120"
