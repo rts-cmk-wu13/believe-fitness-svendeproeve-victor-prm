@@ -1,5 +1,5 @@
-export default function HorizontalDivider(){
+export default function HorizontalDivider({...props}){
     return(
-        <hr className="border-fit-00 border-[1.5] w-1/5 min-w-10 mx-auto mt-12 "/>
+        <hr className={`border-fit-00 border-[1.5] w-1/5 min-w-10 mx-auto mt-8 ${props.className || ""}`}/>
     )
 }

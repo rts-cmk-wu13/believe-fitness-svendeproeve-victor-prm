@@ -33,10 +33,8 @@ export default async function logUserIn(prevState, formData) {
     //Remember user if user checks checkbox, otherwise cookie will default as session cookie
     if (values.remember === "save") {
         cookieStore.set("believe-access-token", result.token, { expires: result.validUntil });
-        cookieStore.set("believe-user-id", result.userId, { expires: result.validUntil });
     } else {
         cookieStore.set("believe-access-token", result.token);
-        cookieStore.set("believe-user-id", result.userId);
     }
 
     return redirect("/profile");
