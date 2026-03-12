@@ -56,7 +56,7 @@ export default function RatingMeter({ ...props }) {
                     :
                     (ratingStars.map((star, idx) => <RatingStar key={idx} index={null} />))}
             </div>
-            <p className={`font-inter hidden sm:block ${enlarge ? "text-xl" : "text-sm"}`}>{r ? `${r.toFixed(2)}/5` : "Unrated"}</p>
+            <p className={`font-poppins font-medium hidden sm:block ${enlarge ? "text-xl" : "text-sm"}`}>{r ? `${r.toFixed(2)} | 5` : "? | ?"}</p>
         </div>
 
     )

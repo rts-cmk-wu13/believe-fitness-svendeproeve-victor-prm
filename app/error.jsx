@@ -13,16 +13,16 @@ export default function Error({ error, reset }) {
                 {error.message && <p className="text-xl opacity-60">{capitalizeFirstLetter(error.message)}</p>}
                 <div className="flex gap-4 mx-auto w-fit mt-8">
                     <ButtonSecondary
-                    label="Try again"
-                    icon={<LuRotateCw />}
-                    onClick={() => reset()} 
+                        label="Try again"
+                        icon={<LuRotateCw />}
+                        onClick={() => reset()}
                     />
 
                     <ButtonSecondary
-                    label="Back to home"
-                    icon={<LuArrowRight />}
-                    type="link"
-                    href="/"
+                        label="Back to home"
+                        icon={<LuArrowRight />}
+                        type="link"
+                        href="/"
                     />
                 </div>
             </hgroup>

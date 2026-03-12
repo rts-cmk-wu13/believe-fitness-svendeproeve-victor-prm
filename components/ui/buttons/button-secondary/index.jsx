@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 
-export default function ButtonSecondary({ onClick, ...props }) {
+export default function ButtonSecondary({ onClick, disabled, ...props }) {
     const type = props.type || "submit"
     const href = props.href || "#"
     const labelIsText = typeof props.label === "string";
@@ -11,7 +11,7 @@ export default function ButtonSecondary({ onClick, ...props }) {
         return (
             <Link
                 href={href}
-                className={`cust-button-sec disabled:gray-400 disabled:text-black/75 disabled:opacity-66 disabled:cursor-not-allowed ${props.className}`}
+                className={`cust-button-sec disabled:gray-400 disabled:cursor-not-allowed disabled:bg-fit-9e/80 disabled:text-fit-6f  ${props.className}`}
                 {...(props.disabled && props.disabled)} // Attach disabled if passed as props
             >
                 <>
@@ -25,9 +25,10 @@ export default function ButtonSecondary({ onClick, ...props }) {
     return (
         <button
             type={type == "submit" ? "submit" : "button"}
-            className={`cust-button-sec disabled:gray-400 disabled:text-black/75 disabled:opacity-66 disabled:cursor-not-allowed ${props.className}`}
+            className={`cust-button-sec disabled:gray-400 disabled:cursor-not-allowed disabled:bg-fit-9e/80 disabled:text-fit-6f  ${props.className}`}
             {...(onClick && { onClick })} // Attach onClick if passed as props
-            {...(props.disabled && props.disabled)} // Attach disabled if passed as props
+            {...(disabled && { disabled })} // Attach disabled if passed as props
+            {...(disabled && { title: "You must be logged in to perfom this action" })}
         >
             <>
                 {props.label && <span className={labelIsText ? "inline-block" : ""}>{props.label}</span>}

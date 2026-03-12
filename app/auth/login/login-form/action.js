@@ -28,7 +28,7 @@ export default async function logUserIn(prevState, formData) {
     }
 
     const result = await fetchFromAPI("/auth/token",{method: "POST", values: values})
-    /*  console.log("🟢", result) */
+     console.log("🟢", result)
 
     //Remember user if user checks checkbox, otherwise cookie will default as session cookie
     if (values.remember === "save") {

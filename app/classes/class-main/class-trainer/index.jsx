@@ -5,12 +5,12 @@ export default function ClassTrainer({ ...props }) {
     const d = props.data
 
     return (
-        <article className="relative flex items-center gap-4 rounded-2xl hover:opacity-80 max-w-sm">
+        <article className="relative flex items-center gap-4 rounded-2xlmax-w-sm transition-opacity  hover:opacity-80">
             <Image
                 src={d.asset.url}
                 alt={`Profile image for trainer named ${d.trainerName}`}
-                width={1500}
-                height={1500}
+                width={240}
+                height={240}
                 className="aspect-square w-24 object-cover rounded-2xl ring ring-fit-9e"
                 loading="eager"
             />

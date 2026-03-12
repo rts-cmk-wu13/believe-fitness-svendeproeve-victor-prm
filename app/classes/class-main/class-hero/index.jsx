@@ -6,6 +6,8 @@ import { averageClassRating } from "@/lib/utils";
 
 export default async function ClassHero({ ...props }) {
     const d = props.data;
+    const u = props.user
+    console.log("💌",u)
 
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
@@ -16,8 +18,8 @@ export default async function ClassHero({ ...props }) {
                 <Image
                     src={d.asset.url}
                     alt={`Image for event named ${d.className}`}
-                    width={1500}
-                    height={1500}
+                    width={1000}
+                    height={1000}
                     className="size-full object-cover object-top"
                     loading="eager"
                 />
@@ -30,7 +32,10 @@ export default async function ClassHero({ ...props }) {
                     <div className="flex justify-between gap-8 rounded-[100vw] bg-fit-ff/33 backdrop-blur-3xl pl-3">
                         <RatingMeter rating={currentRating} enlarge={true} />
                         {!props.link ?
-                            (<ButtonPrimary label="Rate" />)
+                            (<ButtonPrimary
+                                label="Rate"
+                                disabled={!u}
+                            />)
                             :
                             (<ButtonPrimary label="See more" type="link" href={`/classes/${d.id}`} />)}
                     </div>

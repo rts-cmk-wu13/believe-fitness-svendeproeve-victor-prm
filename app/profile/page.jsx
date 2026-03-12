@@ -18,8 +18,7 @@ import { LuArrowRight } from "react-icons/lu";
 
 export default async function Page() {
     const user = await getSession()
-
-    console.log(user)
+    if(!user) return null;
 
     return (
         <PageContainer>

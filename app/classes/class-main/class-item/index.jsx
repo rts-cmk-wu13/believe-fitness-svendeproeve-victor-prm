@@ -25,12 +25,12 @@ export default function ClassItem({ ...props }) {
     const currentRating = averageClassRating(ratings)
 
     return (
-        <article className='cust-grid-stack relative rounded-2xl overflow-hidden aspect-square max-w-2xl font-inter snap-center'>
+        <article className='cust-grid-stack relative rounded-2xl overflow-hidden aspect-square max-w-2xl font-inter snap-center transition-opacity  hover:opacity-80'>
             <Image
                 src={d.asset.url}
                 alt={`Image for event named ${d.className}`}
-                width={1000}
-                height={1000}
+                width={384}
+                height={384}
                 className="size-full object-cover"
             />
             <hgroup className="bg-fit-reg size-fit flex flex-col gap-0.5 p-2 pr-8 rounded-[0_2rem_0_0] self-end *:leading-tight rounded-bl-2xl">
