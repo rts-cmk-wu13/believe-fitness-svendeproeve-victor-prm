@@ -5,7 +5,7 @@ import { loginSchema } from "@/lib/schemas";
 import { fetchFromAPI } from "@/lib/dal/general";
 
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation"; 
+import { redirect } from "next/navigation";
 
 export default async function logUserIn(prevState, formData) {
     const cookieStore = await cookies();
@@ -27,15 +27,22 @@ export default async function logUserIn(prevState, formData) {
         };
     }
 
-    const result = await fetchFromAPI("/auth/token",{method: "POST", values: values})
-     console.log("🟢", result)
+    const result = await fetchFromAPI("/auth/token", { method: "POST", values: values })
+    console.log("🟢", result)
 
-    //Remember user if user checks checkbox, otherwise cookie will default as session cookie
-    if (values.remember === "save") {
-        cookieStore.set("believe-access-token", result.token, { expires: result.validUntil });
-    } else {
-        cookieStore.set("believe-access-token", result.token);
+    if (result) {
+        //Remember user if user checks checkbox, otherwise cookie will default as session cookie
+        if (values.remember === "save") {
+            cookieStore.set("believe-access-token", result.token, { expires: result.validUntil });
+        } else {
+            cookieStore.set("believe-access-token", result.token);
+        }
+
+        //redirect("/profile");
     }
 
-    return redirect("/profile");
+     return {
+        success: false,
+        object: result
+    }
 }

@@ -4,6 +4,8 @@ import InputField from "@/components/ui/input-field";
 import logUserIn from "./action";
 import { useActionState } from "react";
 import ButtonPrimary from "@/components/ui/buttons/button-primary";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 //For testing purposes
 /* const initialState = {
@@ -17,6 +19,15 @@ const initialState = {}
 
 export default function LoginForm() {
     const [state, formAction, isPending] = useActionState(logUserIn, initialState);
+
+    console.log(state)
+
+    useEffect(() => {
+        if (state?.success !==undefined && !state?.success) {
+            toast.error("Wrong or missing credentials"
+            );
+        }
+    }, [state]);
 
     return (
         <form className="cust-form flex-col" action={formAction} noValidate>

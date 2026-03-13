@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} ${inter.variable} antialiased font-inter`}
       >
         {children}
-        <ToastContainer hideProgressBar={true} pauseOnHover={false} autoClose={3000} closeButton={false} />
+        <ToastContainer position="bottom-right" hideProgressBar={true} pauseOnHover={false} autoClose={3000} closeButton={false} />
       </body>
     </html>
   );
