@@ -50,7 +50,7 @@ Projektet er bygget i en klassisk Nextjs-struktur, der næsten følger standardi
 
 Helt basalt er projektet opbygget efter konventionen i NextJS hvor hvert route har et mappenavn (som ender med at blive navnet på routen i browseren), med en page.jsx i hver mappe. Projektet gør stor brug af genbrugelige komponenter. Komponenterne er opbygget lignende den måde routes er lavet på. Komponentets mappenavn beskriver hvad komponentets funktion, og hver mappe har en index.jsx i sig, der indholder koden til at rendere det. I visse tilfælde ligger der også andre filer i disse komponentmapper. Det kan fx. være hvis en server action hører til et givent komponent, eller hvis ét komponent består af flere relaterede underkomponenter.
 
-Projektets "profile"-view (/profile) er beskyttet af en ``proxy.js`` fil, der navigerer brugeren til auth-logic hvis ikke de er logget ind. Proxy'en er ikke eneste lag af beskyttelse. Adskillige steder i appen checkes der om brugeren er logget ind eller ej, og ændrer indholdet (og redigerings-rettingheder) derefter. Nogle steder bliver man redirected hvis man allerede er logget ind (fx. hvis du besøger /auth eller /auth/login). Ligeledes er der en cookie der husker om brugeren har set splash-screen denne session. Hvi
+Projektets "profile"-view (/profile) er beskyttet af en ``proxy.js`` fil, der navigerer brugeren til auth-logic hvis ikke de er logget ind. Proxy'en er ikke eneste lag af beskyttelse. Adskillige steder i appen checkes der om brugeren er logget ind eller ej, og ændrer indholdet (og redigerings-rettingheder) derefter. Nogle steder bliver man redirected hvis man allerede er logget ind (fx. hvis du besøger /auth eller /auth/login). Ligeledes er der en cookie der husker om brugeren har set splash-screen denne session. Lige nu er dette tjek kun implementeret på forsiden, men tænker også det giver fin mening som en start.
 <br>
 <br>
 
@@ -66,13 +66,17 @@ Projektets ensartede struktur, den udbredte brug af komponenter og hjælpefunkti
 <br>
 
 ## Ekstraopgave
-Jeg har løst **Valgfri opgave A – Ratings**
+Jeg har løst **Valgfri opgave A – Ratings** <br>
 Desuden har jeg gjort det muligt for brugeren at forblive logget ind - dog med den note at en token (pga. den måde API er leveret) kun valid i max. 1 time. Men det er muligt at sætte en session cookie vs. expiresIn/validUntil-cookie, så tokens kan bevares selv hvis sessionen slutter midlertidigt (fx. hvis browseren lukkes/åbnes igen). 
+<br>
+<br>
 
 ## Kodeeksempel
-Jeg synes selv det er smart løst hvordan vi i koden tilmelder/framelder brugere. Vi her deler jeg både noget frontendkode (``details-header/index.jsx``), og noget backend-kode i form at den action der tilhører dette component (``details-header/action.js``).
+Jeg har valgt at dele denne fetch-wrapper-funktion, som jeg har brugt flittigt rundt omkring i appen - ja, faktisk alle steder jeg læser og skriver data til api'et. Jeg har valgt at dele denne funktion, da det nok er den enkelte fil jeg har brugt mest tid på. Jeg har endda skrevet en lille JSDocs specifikation til den. Det gør det nemmere at bruge funktionen rundt omkring i appen (uden at skulle tilbage i funktionen og se hvad der er hvad). VSCode viser en popup med funktionens parametre som man begynder at taste. Desuden er det lettere at komme tilbage til funktionen en senere gang. Nu brugte jeg ikke typescript i dette projekt, men det bl.a. disse lignende egenskaber jeg godt kan lide ved typescript (udover type-safety).
 
-[General-purpose Fetch Wrapper](lib/dal/general.js) ⇐ Klik her for at se filen
+I stedet for at skrive en lang liste om hvad funktionen gør her, har jeg kommenteret koden blok for blok, så I kan følge med i mine intentioner med denne funktion. Jeg koder altid på engelsk (inkl. kommentarer), så jeg håber I kan leve med at kommentarerne er på engelsk. Efter kode-eksemplet vil jeg forklare lidt om hvorfor denne funktion har været til hjælp, hvordan den bruges i praksis mm.
+
+[General-purpose Fetch Wrapper](/lib/dal/general.js) ⇐ Klik her for at se filen
 
 ```javascript
 "use server";
@@ -208,7 +212,10 @@ export async function fetchFromAPI(
 }
 ```
 
+### Hvordan ser brugen af denne funktion ud i praksis?
+Grunden til at jeg lavede denne wrapper var at jeg gerne ville prøve at standardisere hvordan fetches blev lavet rundt omkring i appen. Jeg ville gerne have en centraliseret måde at opbygge mine fetches og især ville jeg gerne have en centraliseret måde at lave fejlhåndtering, så det (så vidt muligt) ikke skulle gøre individuelt på hvert eneste af de mange fetches der bliver laver rundt omkring i appen (15+ styks i skrivende stund). 
 
+Er der denne funktion perfekt? Nej. Har jeg genopfundet den dybe tallerken? Måske. Men denne wrapper har fulgt mig omkring i projektet fra dag 1. Sjældent har den fejlet, og hvis den har, har jeg været inde og forbedre og udbygge den på ny. Men vigtigst af alt har det været en sjov og lærerig process at skulle lave en funktion der skal kunne modtage og berarbejde så meget information - og så endda med et API i den anden ende som øjeblikkelig dommer. Alt i alt, synes jeg synes selv jeg kom godt i mål. I skrivende stund er der ikke nogen opgaver jeg stødt på, hvor min kode ikke har kunne håndtere hvad API'et har krævet af den.
 
 ## Appendix
 
