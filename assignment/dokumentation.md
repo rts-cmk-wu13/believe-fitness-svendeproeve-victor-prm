@@ -48,7 +48,8 @@ Nextjs er et komponent-baseret Javascript framework. Jeg har valgt Nextjs, fordi
 ### Struktur
 Projektet er bygget i en klassisk Nextjs-struktur, der næsten følger standardinsdtillingerne når man skaber et nyt next project med ```create next-app@latest```. Det eneste jeg har valgt anderledes, er at undlade at bruge typescript, som jeg ellers er fan af funktionelt. Jeg ville dog ikke risikere at havne typescript-problemer, når vi kun har 5 dage til at løse opgaven i. I stedet har jeg forsøgt at være god til at typecaste variable manuelt, og skrive guard-clauses hvor komponenter/funktionen kan gå i stykker, hvis ikke dataen er rigtigt forarbejdet.
 
-Helt basalt er projektet opbygget efter konventionen i NextJS hvor hvert route har et mappenavn (som ender med at blive navnet på routen i browseren), med en page.jsx i hver mappe. Projektet gør stor brug af genbrugelige komponenter. Komponenterne er opbygget lignende den måde routes er lavet på. Komponentets mappenavn beskriver hvad komponentets funktion, og hver mappe har en index.jsx i sig, der indholder koden til at rendere det. I visse tilfælde ligger der også andre filer i disse komponentmapper. Det kan fx. være hvis en server action hører til et givent komponent, eller hvis ét komponent består af flere relaterede underkomponenter.
+
+Helt basalt er projektet opbygget efter konventionen i NextJS hvor hvert route har et mappenavn (som ender med at blive navnet på routen i browseren), med en page.jsx i hver mappe (se Routes oversigt i toppen af dette dokument). Projektet gør stor brug af genbrugelige komponenter. Komponenterne er opbygget lignende den måde routes er lavet på. Komponentets mappenavn beskriver hvad komponentets funktion, og hver mappe har en index.jsx i sig, der indholder koden til at rendere det. I visse tilfælde ligger der også andre filer i disse komponentmapper. Det kan fx. være hvis en server action hører til et givent komponent, eller hvis ét komponent består af flere relaterede underkomponenter. Se Appendix A1 for oversigt over hele projektets struktur.
 
 Projektets "profile"-view (/profile) er beskyttet af en ``proxy.js`` fil, der navigerer brugeren til auth-logic hvis ikke de er logget ind. Proxy'en er ikke eneste lag af beskyttelse. Adskillige steder i appen checkes der om brugeren er logget ind eller ej, og ændrer indholdet (og redigerings-rettingheder) derefter. Nogle steder bliver man redirected hvis man allerede er logget ind (fx. hvis du besøger /auth eller /auth/login). Ligeledes er der en cookie der husker om brugeren har set splash-screen denne session. Lige nu er dette tjek kun implementeret på forsiden, men tænker også det giver fin mening som en start.
 <br>
@@ -212,9 +213,35 @@ export async function fetchFromAPI(
 }
 ```
 
-### Hvordan ser brugen af denne funktion ud i praksis?
-Grunden til at jeg lavede denne wrapper var at jeg gerne ville prøve at standardisere hvordan fetches blev lavet rundt omkring i appen. Jeg ville gerne have en centraliseret måde at opbygge mine fetches og især ville jeg gerne have en centraliseret måde at lave fejlhåndtering, så det (så vidt muligt) ikke skulle gøre individuelt på hvert eneste af de mange fetches der bliver laver rundt omkring i appen (15+ styks i skrivende stund). 
+### Funktionens Raison d'être
+Grunden til at jeg lavede denne wrapper, var at jeg gerne ville prøve at standardisere hvordan fetches blev lavet rundt omkring i appen. Jeg ville gerne have en centraliseret måde at opbygge mine fetches. Endnu vigtigere, ville jeg gerne have en centraliseret måde at lave fejlhåndtering, så det (så vidt muligt) ikke skulle gøres individuelt på hvert eneste af de mange fetches, der bliver laver rundt omkring i appen (15+ styks i skrivende stund). <br>
 
+Lad os kigge på et simpelt eksempel i brug:
+![alt text](/assignment/docs_eksempel_1.png)
+
+Ovenstående endpoint kan interageres med således:
+
+```javascript
+const values = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+    };
+
+const result = await fetchFromAPI("/api/v1/messages", { method: "POST", values: values })
+```
+Ligesom et normalt ```fetch()``` er standard-metoden ```GET```, så vi specificerer at dette skal være et ```POST```. Og så er det bare og sende ```formData```værdierne med, og så genererer funktionen selv dynamisk en ```body``` og bruger ```JSON.Stringify``` til værdierne. I min app bliver værdierne selvfølgeligt valideret også, før de sendes til API'et, ovenstående er bare et hurtigt eksempel.
+
+En anden fordel er, at jeg med dette fetch kan inkludere nøglen (key'en) ```secured```til mit ```options```-objekt. Således kan jeg, alene ved at sætte ```options:{secured:true}```, bla. sørge for at følgende ting sker (ikke 100% i rækkefølge):
+
+- Sig til funktionen, at det pågælden endpoint er beskyttet, og derfor kræver en gyldig token
+- Forsøge at finde selvsamme token fra brugerens cookies
+- Hvis ikke ikke token findes, kan der navigeres til at logge ind (så brugeren har mulighed anskaffe sig en gyldig token)
+- Dynamisk tilføje Authorization Header med Bearer "ey......" hvis token findes og ruten er beskyttet
+- Tjekke om token er udløbet (selvom den findes), og logisk give et andet udfald hvis ja.
+Alt sammen bare ved at sætte en enklet key i mine options. 
+
+Det har været fedt, ikke at skulle lave sådanne logik forfra hver gang jeg skulle tilgå et endpoint i API'et fra min app (beskyttet endpoint eller ej). <br>
 Er der denne funktion perfekt? Nej. Har jeg genopfundet den dybe tallerken? Måske. Men denne wrapper har fulgt mig omkring i projektet fra dag 1. Sjældent har den fejlet, og hvis den har, har jeg været inde og forbedre og udbygge den på ny. Men vigtigst af alt har det været en sjov og lærerig process at skulle lave en funktion der skal kunne modtage og berarbejde så meget information - og så endda med et API i den anden ende som øjeblikkelig dommer. Alt i alt, synes jeg synes selv jeg kom godt i mål. I skrivende stund er der ikke nogen opgaver jeg stødt på, hvor min kode ikke har kunne håndtere hvad API'et har krævet af den.
 
 ## Appendix
