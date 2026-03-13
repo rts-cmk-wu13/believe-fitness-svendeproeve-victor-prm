@@ -12,7 +12,6 @@ import { LuCalendarPlus, LuCalendarX2, LuCalendarOff } from "react-icons/lu";
 
 export default function ParticipationForm({ user, activity, fullyBooked, calendarConflict }) {
     const [state, formAction, isPending] = useActionState(addRemoveUser, {});
-    //console.log(fullyBooked,calendarConflict)
 
     const userIsEnrolled = user.classes.some(act => act.id === Number(activity.id));
 

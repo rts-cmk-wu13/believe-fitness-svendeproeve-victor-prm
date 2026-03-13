@@ -15,8 +15,6 @@ export default function RatingPopover({ user, activity }) {
     const [state, formAction, isPending] = useActionState(saveRating, {});
     const [rating, setRating] = useState(null)
 
-    console.log(state)
-
     const handleChange = (e) => {
         setRating(e.target.value)
     }

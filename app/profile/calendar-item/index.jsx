@@ -11,9 +11,6 @@ export default async function CalendarItem({ ...props }) {
     const u = await getSession();
     const d = await fetchFromAPI(`/api/v1/classes/${props.data.id}`)
 
-    console.log(d)
-
-
     return (
         <article className="max-w-sm flex flex-col gap-3 p-5 rounded-4xl border border-black">
             <hgroup className="flex justify-between items-center">

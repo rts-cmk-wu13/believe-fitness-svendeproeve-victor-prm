@@ -13,7 +13,6 @@ export default async function ClassHero({ ...props }) {
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
 
-    console.log(ratings)
     const hasVoted = !props.link && u ? ratings.find(r => r.userId === u.id) : false;
 
     return (

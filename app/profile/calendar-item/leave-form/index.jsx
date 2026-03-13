@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 
 export default function LeaveForm({ user, activity }) {
     const [state, formAction, isPending] = useActionState(addRemoveUser, {});
-    console.log(state)
 
     useEffect(() => {
         if (state?.success) {

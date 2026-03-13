@@ -20,8 +20,6 @@ export default async function ClassDetailPage({ params }) {
     const d = await fetchFromAPI(`/api/v1/classes/${id}`)
     if (!d) return notFound();
 
-    console.log(d)
-
     const user = await getSession();
     const trainer = await fetchFromAPI(`/api/v1/trainers/${d.trainer.id}`)
 

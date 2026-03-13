@@ -8,8 +8,6 @@ export default function InputField({ type, name, label, onChange, ...props }) {
     if (!name) throw new Error("Missing name in input field")
     if (!type) throw new Error("Missing type in input field")
 
-    //console.log(props.errors)
-
     const ErrorMessage = ({ msg, abs = true }) => {
         return (
             <strong className={`
