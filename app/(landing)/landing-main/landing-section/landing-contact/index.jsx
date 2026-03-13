@@ -8,15 +8,16 @@ import { useEffect } from "react";
 import ButtonPrimary from "@/components/ui/buttons/button-primary";
 import { toast } from "react-toastify";
 
-
-const initialState = {
+//Testing purposes
+/* const initialState = {
     values: {
         name: "Ursula",
         email: "urs@mail.dk",
         message: "Hvornår har I Zumba-timer igen? Det var megasjovt sidste år!"
     },
     errors: undefined
-}
+} */
+const initialState = {}
 
 export default function LandingContact() {
     const [state, formAction, isPending] = useActionState(sendMessage, initialState);
@@ -31,9 +32,9 @@ export default function LandingContact() {
         <LandingSection title="Contact us">
             <p className="cust-body-text">Ask us anything about Believe Fitness!</p>
             <form className="cust-form flex-col" action={formAction} noValidate>
-                <InputField type="text" name="name" label="navn" defaultValue={state?.values?.name} errors={state?.errors?.name} />
+                <InputField type="text" name="name" label="name" defaultValue={state?.values?.name} errors={state?.errors?.name} />
                 <InputField type="email" name="email" label="email" defaultValue={state?.values?.email} errors={state?.errors?.email} />
-                <InputField type="textarea" name="message" label="besked" defaultValue={state?.values?.message} errors={state?.errors?.message} />
+                <InputField type="textarea" name="message" label="message" defaultValue={state?.values?.message} errors={state?.errors?.message} />
 
                 <ButtonPrimary
                     label={isPending ? "Please wait..." : "Send Message"}

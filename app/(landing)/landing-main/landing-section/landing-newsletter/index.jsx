@@ -8,13 +8,14 @@ import { useActionState, useEffect } from "react"
 import subscribeToNewsletter from "./action"
 import { toast } from "react-toastify";
 
-const initialState = {
+//For testing purposes
+/* const initialState = {
     values: {
         email: "urs@mail.dk",
     },
     errors: undefined
-}
-
+} */
+const initialState = {};
 
 export default function LandingNewsletter() {
     const [state, formAction, isPending] = useActionState(subscribeToNewsletter, initialState);

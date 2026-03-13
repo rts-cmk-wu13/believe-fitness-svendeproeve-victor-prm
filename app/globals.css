@@ -92,11 +92,11 @@
 
 @layer components {
   .cust-button {
-    @apply size-fit bg-fit-reg py-3 px-6 rounded-full font-poppins font-semibold uppercase inline-flex gap-2 justify-center items-center shrink-0  cursor-pointer duration-300 hover:bg-fit-lte enabled:hover:[&>strong]:-skew-x-12 disabled:cursor-not-allowed disabled:bg-fit-drk/10 disabled:text-fit-drk/60
+    @apply size-fit bg-fit-reg py-3 px-6 rounded-full font-poppins font-semibold uppercase inline-flex gap-2 justify-center items-center shrink-0 whitespace-nowrap cursor-pointer duration-300 hover:bg-fit-lte enabled:hover:[&>strong]:-skew-x-12 disabled:cursor-not-allowed disabled:bg-fit-drk/10 disabled:text-fit-drk/60
   }
 
   .cust-button-sec {
-    @apply border border-black size-fit py-3 px-6 rounded-full font-poppins font-semibold uppercase inline-flex justify-center gap-2 items-center shrink-0  cursor-pointer duration-300 hover:bg-fit-lte enabled:hover:[&>strong]:-skew-x-12 disabled:cursor-not-allowed disabled:bg-fit-drk/10 disabled:text-fit-drk/60
+    @apply border border-black size-fit py-3 px-6 rounded-full font-poppins font-semibold uppercase inline-flex justify-center gap-2 items-center shrink-0 whitespace-nowrap cursor-pointer duration-300 hover:bg-fit-lte enabled:hover:[&>strong]:-skew-x-12 disabled:cursor-not-allowed disabled:bg-fit-drk/10 disabled:text-fit-drk/60
   }
 
   .cust-grid-stack {

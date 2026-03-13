@@ -25,15 +25,15 @@ export default async function Page() {
             <TopNav />
             <AppMain>
                 <PageSection className="py-2 my-6">
-                    <div className="flex items-center gap-2">
-                        <figure className="size-16 bg-fit-reg rounded-full flex items-end justify-center overflow-clip border border-black">
+                    <div className="flex flex-col items-center gap-2">
+                        <figure className="size-16 bg-fit-reg rounded-full flex items-end justify-center overflow-clip border border-black shrink-0">
                             <HiUser className="size-3/4 -mb-[5%]" />
                         </figure>
-                        <hgroup className="flex flex-col">
+                        <hgroup className="flex flex-col items-center mb-4">
                             <h2 className="text-lg font-medium">{formattedUserHandle(user.userFirstName, user.userLastName, user.username)}</h2>
-                            <small>{capitalizeFirstLetter(formatRole(user.role))}</small>
+                            <small className="w-fit">{capitalizeFirstLetter(formatRole(user.role))}</small>
                         </hgroup>
-                        <LogoutForm />
+                        <LogoutForm className="mx-auto"/>
                     </div>
                 </PageSection>
 

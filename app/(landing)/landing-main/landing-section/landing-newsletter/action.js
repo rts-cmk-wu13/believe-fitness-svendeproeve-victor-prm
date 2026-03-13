@@ -24,7 +24,7 @@ export default async function subscribeToNewsletter(prevState, formData) {
     }
 
     const result = await fetchFromAPI("/api/v1/newsletter", { method: "POST", values: values })
-    /* console.log("🟢", result) */
+    console.log("🟢", result)
 
     return result;
 }

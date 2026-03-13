@@ -22,9 +22,13 @@ export default function MenuOverlay({ ...props }) {
                     <li>
                         <Link className="p-1 block hover:opacity-60" href={"/search"}>Search</Link>
                     </li>
-                    <li>
-                        <Link className="p-1 block hover:opacity-60" href={"/profile"}>Profile</Link>
-                    </li>
+                    {
+                        isLoggedIn &&
+                        <li>
+                            <Link className="p-1 block hover:opacity-60" href={"/profile"}>Profile</Link>
+                        </li>
+                    }
+
                     {
                         !isLoggedIn ? (
                             <li>
@@ -36,8 +40,6 @@ export default function MenuOverlay({ ...props }) {
                     }
                 </ul>
             }
-
-
         </div >
 
     )
