@@ -10,9 +10,9 @@ import { LuCalendarPlus, LuCalendarX2, LuCalendarOff } from "react-icons/lu";
 
 
 
-export default function ParticipationForm({ user, activity, disabled }) {
+export default function ParticipationForm({ user, activity, fullyBooked, calendarConflict }) {
     const [state, formAction, isPending] = useActionState(addRemoveUser, {});
-    console.log(state)
+    //console.log(fullyBooked,calendarConflict)
 
     const userIsEnrolled = user.classes.some(act => act.id === Number(activity.id));
 
@@ -26,6 +26,20 @@ export default function ParticipationForm({ user, activity, disabled }) {
         }
     }, [state]);
 
+    const disabled = (fullyBooked || calendarConflict);
+    let disabledMsg = {}
+    if (disabled && calendarConflict) {
+        disabledMsg = {
+            label: "Double booking",
+            explanation: "You've got another class that day!"
+        }
+    }
+    if (disabled && fullyBooked) {
+        disabledMsg = {
+            label: "No seats left",
+            explanation: "This class is full!"
+        }
+    }
 
 
     return (
@@ -41,10 +55,10 @@ export default function ParticipationForm({ user, activity, disabled }) {
             {
                 !userIsEnrolled ?
                     <ButtonPrimary
-                        label={disabled ? ("Double booking") : (!userIsEnrolled ? "Sign up" : "Leave")}
+                        label={disabled ? disabledMsg.label : (!userIsEnrolled ? "Sign up" : "Leave")}
                         className={"w-full max-w-130"}
                         disabled={disabled}
-                        explanation="You've got another class that day!"
+                        explanation={disabled && disabledMsg.explanation}
                         icon={disabled ? <LuCalendarOff /> : userIsEnrolled ? <LuCalendarX2 /> : <LuCalendarPlus />}
                     /> :
                     <ButtonSecondary

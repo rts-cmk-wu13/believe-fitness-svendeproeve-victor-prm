@@ -9,8 +9,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import MenuOverlay from "./menu-overlay";
+import { getSession } from "@/lib/dal/session";
 
 export default function NavHeader() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [toggle, setToggle] = useState(false)
     const [toggleInitialized, setToggleInitiatoggleInitialized] = useState(false)
     const [scrollThreshold, setScrollThreshold] = useState(false);
@@ -27,6 +29,15 @@ export default function NavHeader() {
                 setScrollThreshold(window.pageYOffset > 56)
             );
         }
+    }, []);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const u = await getSession()
+            setIsLoggedIn(u);
+        };
+
+        fetchUser();
     }, []);
 
     const handleToggle = () => {
@@ -84,6 +95,7 @@ export default function NavHeader() {
                 <MenuOverlay
                     toggle={toggle}
                     toggleInitialized={toggleInitialized}
+                    isLoggedIn={isLoggedIn}
                 />
             </nav>
         </header>

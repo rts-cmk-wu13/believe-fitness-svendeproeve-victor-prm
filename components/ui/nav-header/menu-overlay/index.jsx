@@ -1,7 +1,8 @@
 import Link from "next/link"
+import LogoutForm from "@/app/profile/logout-form";
 
 export default function MenuOverlay({ ...props }) {
-    const isLoggedIn = false;
+    const isLoggedIn = props.isLoggedIn || false;
 
     return (
         <div className={
@@ -11,18 +12,18 @@ export default function MenuOverlay({ ...props }) {
         >
             {
                 props.toggle &&
-                <ul className="flex flex-col text-2xl font-poppins font-medium gap-8 h-fit w-40 text-center mt-16 mx-auto">
+                <ul className="flex flex-col text-2xl font-poppins font-medium gap-8 h-fit w-60 text-center mt-16 mx-auto">
                     <li>
-                        <Link className="p-4" href={"/"}>Home</Link>
+                        <Link className="p-1 block hover:opacity-60" href={"/"}>Home</Link>
                     </li>
                     <li>
-                        <Link className="p-4" href={"/classes"}>Classes</Link>
+                        <Link className="p-1 block hover:opacity-60" href={"/classes"}>Classes</Link>
                     </li>
                     <li>
-                        <Link className="p-4" href={"/search"}>Search</Link>
+                        <Link className="p-1 block hover:opacity-60" href={"/search"}>Search</Link>
                     </li>
                     <li>
-                        <Link className="p-4" href={"/profile"}>Profile</Link>
+                        <Link className="p-1 block hover:opacity-60" href={"/profile"}>Profile</Link>
                     </li>
                     {
                         !isLoggedIn ? (
@@ -30,9 +31,7 @@ export default function MenuOverlay({ ...props }) {
                                 <Link className="p-4" href={"/auth/login"}>Login</Link>
                             </li>
                         ) : (
-                            <li>
-                                <button className="p-4" href={"/"}>Log out</button>
-                            </li>
+                            <LogoutForm className="mx-auto" />
                         )
                     }
                 </ul>
