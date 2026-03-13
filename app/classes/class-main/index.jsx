@@ -16,7 +16,7 @@ export default async function ClassMain() {
             <ClassHero data={shuffledClasses[0]} link={true} />
             <PageSection title="Classes for you">
                 <CardList variant="horizontal">
-                    {shuffledClasses.map((cl, idx) => (<ClassItem key={idx} data={cl} />))}
+                    {shuffledClasses.slice(1).map((cl, idx) => (<ClassItem key={idx} data={cl} />))}
                 </CardList>
             </PageSection>
         </AppMain>

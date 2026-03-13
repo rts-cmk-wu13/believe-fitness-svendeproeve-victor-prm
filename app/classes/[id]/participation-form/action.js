@@ -11,6 +11,8 @@ export default async function addRemoveUser(prevState, formData) {
         isEnrolled: formData.get("isEnrolled") === "true",
     };
 
+    console.log("💿", values)
+
     const validate = addRemoveUserSchema.safeParse(values);
     if (!validate.success) {
         return {
@@ -22,20 +24,19 @@ export default async function addRemoveUser(prevState, formData) {
     const method = values.isEnrolled ? "DELETE" : "POST";
 
     const result = await fetchFromAPI(
-        method,
-        `/api/v1/users/${values.userId}/activities/${values.activityId}`,
-        null,
-        true
+        `/api/v1/users/${values.userId}/classes/${values.activityId}`,
+        {
+            method: method,
+            secured: true
+        }
     );
 
-    // Revalidate paths
-    revalidatePath("/home/activities");
-    revalidatePath(`/home/activities/${values.activityId}`);
-    revalidatePath("/home/profile");
+    //console.log("🎁", result)
+    revalidatePath("/classes");
+    revalidatePath("/profile");
 
     return {
         success: true,
         object: result
     }
-
 }

@@ -23,6 +23,9 @@ export default async function ClassDetailPage({ params }) {
     const user = await getSession();
     const trainer = await fetchFromAPI(`/api/v1/trainers/${d.trainer.id}`)
 
+    const otherClasses = user && user.classes ? user.classes.filter(cl => cl.id != id) : false;
+    const isOccupied = otherClasses ? otherClasses.some(cl => String(cl.classDay).toLowerCase() === String(d.classDay).toLowerCase()) : false;
+
     return (
         <PageContainer>
             <NavHeader />
@@ -39,7 +42,7 @@ export default async function ClassDetailPage({ params }) {
                         <ClassTrainer data={trainer} />
                     </hgroup>
                     {
-                        user && <ParticipationForm user={user} activity={d} />
+                        user && <ParticipationForm user={user} activity={d} disabled={isOccupied} />
                     }
                 </PageSection>
             </AppMain>

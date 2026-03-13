@@ -2,8 +2,6 @@ import { LuStar } from "react-icons/lu";
 import { LuStarHalf } from "react-icons/lu";
 import { LuStarOff } from "react-icons/lu";
 
-
-
 export default function RatingMeter({ ...props }) {
     const r = Number(props.rating);
     const r_floored = Math.floor((r * 2)) / 2
@@ -46,17 +44,18 @@ export default function RatingMeter({ ...props }) {
         )
     }
 
+    const unrated = r < 0;
 
     return (
-        <div className="flex gap-2 items-center">
-            <div className='flex gap-1 bg-fit-lte w-fit py-0.5 px-2 rounded-4xl items-center'>
+        <div className={`flex gap-2 items-center  ${props.className ? props.className : ""}`}>
+            <div className={`flex gap-1 bg-fit-lte w-fit py-0.5 px-2 rounded-4xl items-center`}>
 
-                {r ?
+                {!unrated ?
                     (ratingStars.map((star, idx) => <RatingStar key={idx} index={idx} />))
                     :
                     (ratingStars.map((star, idx) => <RatingStar key={idx} index={null} />))}
             </div>
-            <p className={`font-poppins font-medium hidden sm:block ${enlarge ? "text-xl" : "text-sm"}`}>{r ? `${r.toFixed(2)} | 5` : "? | ?"}</p>
+            <p className={`font-poppins font-medium hidden sm:block ${enlarge ? "text-xl" : "text-sm"}`}>{!unrated ? `${r.toFixed(2)} | 5` : "? | ?"}</p>
         </div>
 
     )

@@ -3,14 +3,18 @@ import ButtonPrimary from "@/components/ui/buttons/button-primary";
 import RatingMeter from "../class-item/rating-meter";
 import { fetchFromAPI } from "@/lib/dal/general";
 import { averageClassRating } from "@/lib/utils";
+import RatingPopover from "./rating-popover";
+import { LuStar } from "react-icons/lu";
 
 export default async function ClassHero({ ...props }) {
     const d = props.data;
     const u = props.user
-    console.log("💌",u)
 
     const ratings = await fetchFromAPI(`/api/v1/classes/${d.id}/ratings`)
     const currentRating = averageClassRating(ratings)
+
+    console.log(ratings)
+    const hasVoted = !props.link && u ? ratings.find(r => r.userId === u.id) : false;
 
     return (
         <section className='cust-grid-stack bg-fit-drk overflow-hidden py-5 rounded-[0_0_3rem_3rem] h-fit'>
@@ -33,13 +37,17 @@ export default async function ClassHero({ ...props }) {
                         <RatingMeter rating={currentRating} enlarge={true} />
                         {!props.link ?
                             (<ButtonPrimary
-                                label="Rate"
-                                disabled={!u}
+                                label={hasVoted ? hasVoted.rating : "Rate"}
+                                disabled={!u || hasVoted}
+                                explanation={hasVoted ? `You've already rating this class ${hasVoted.rating} stars` : "You need to be logged in to rate"}
+                                popoverTarget="ratings-popover"
+                                icon={hasVoted && <LuStar/>}
                             />)
                             :
                             (<ButtonPrimary label="See more" type="link" href={`/classes/${d.id}`} />)}
                     </div>
                 </hgroup>
+                <RatingPopover user={u} activity={d} />
             </div>
         </section>
     )

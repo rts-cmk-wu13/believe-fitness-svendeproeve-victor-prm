@@ -38,7 +38,7 @@ export default function ClassItem({ ...props }) {
                     href={`/classes/${d.id}`}
                     className={`after:absolute after:inset-0`}
                 >
-                    <h3 className="font-poppins font-semibold ">
+                    <h3 className="font-poppins font-semibold">
                         {d.className}
                     </h3>
                 </Link>
