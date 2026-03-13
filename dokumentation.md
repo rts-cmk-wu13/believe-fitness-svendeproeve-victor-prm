@@ -230,21 +230,21 @@ const values = {
 
 const result = await fetchFromAPI("/api/v1/messages", { method: "POST", values: values })
 ```
-Ligesom et normalt ```fetch()``` er standard-metoden ```GET```, så vi specificerer at dette skal være et ```POST```. Og så er det bare og sende ```formData```værdierne med, og så genererer funktionen selv dynamisk en ```body``` og bruger ```JSON.Stringify``` til værdierne. I min app bliver værdierne selvfølgeligt valideret også, før de sendes til API'et, ovenstående er bare et hurtigt eksempel.
+Ligesom et normalt ```fetch()``` er standard-metoden ```GET```, så vi specificerer at dette skal være et ```POST```. Og så er det bare og sende ```formData```værdierne med, og funktionen vil selv dynamisk generere en ```body``` og bruger ```JSON.Stringify``` til værdierne. I min app bliver værdierne selvfølgelig også valideret før de sendes til API'et - ovenstående er bare et hurtigt eksempel.
 <br>
 <br>
 
-
-En anden fordel er, at jeg med dette fetch kan inkludere nøglen (key'en) ```secured```til mit ```options```-objekt. Således kan jeg, alene ved at sætte ```options:{secured:true}```, bla. sørge for at følgende ting sker (ikke 100% i rækkefølge):
+En anden fordel er, at jeg med dette fetch kan inkludere nøglen (key'en) ```secured```til mit ```options```-objekt. Således kan jeg, alene ved at sætte ```options:{secured:true}```, b.la. sørge for at følgende punker er taget højde for (ikke 100% i rækkefølge):
 
 - Sig til funktionen, at det pågælden endpoint er beskyttet, og derfor kræver en gyldig token
 - Forsøge at finde selvsamme token fra brugerens cookies
 - Hvis ikke ikke token findes, kan der navigeres til at logge ind (så brugeren har mulighed anskaffe sig en gyldig token)
 - Dynamisk tilføje Authorization Header med Bearer "ey......" hvis token findes og ruten er beskyttet
 - Tjekke om token er udløbet (selvom den findes), og logisk give et andet udfald hvis ja.
-Alt sammen bare ved at sætte en enklet key i mine options. 
+<br>
+<br>
 
-Således kan følgende endpoint...
+Alt sammen, bare ved at sætte en enklet key i mine options. Og således kan følgende endpoint...
 ![POST eksempel med beskyttet route](/assignment/docs_eksempel_2.png)
 
 ...interageres med således
