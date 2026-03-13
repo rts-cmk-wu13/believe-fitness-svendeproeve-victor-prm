@@ -12,6 +12,7 @@ Victor Permild, WU13
     - **React Icons** til ikoner
     - **lodash** til hjælpefunktioner (fx. sammenligning af objekter, debounce til søgefunktion)
     - **jwt-decode** til at læse token payloads og timestamps (e.g expiry checks)
+    - **fuseJS** til fuzzy search
 
 ## Routes oversigt
 ```
